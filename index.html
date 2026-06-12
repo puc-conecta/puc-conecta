@@ -1,53 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PUC Conecta</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
+  /* ── TEMA ── */
   :root {
-    --navy: #0a1628;
+    --navy: #1a2e4a;
     --blue: #1a3a6e;
     --accent: #00c2ff;
     --gold: #f5c842;
     --white: #f0f4ff;
-    --card-bg: rgba(255,255,255,0.05);
-    --card-border: rgba(0,194,255,0.15);
+    --card-bg: rgba(255,255,255,0.07);
+    --card-border: rgba(0,194,255,0.18);
+    --bg-gradient: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(36,72,130,0.9) 0%, transparent 70%),
+                   radial-gradient(ellipse 40% 40% at 90% 80%, rgba(0,194,255,0.08) 0%, transparent 60%),
+                   var(--navy);
+    --grid-color: rgba(0,194,255,0.05);
+    --text-main: #f0f4ff;
+    --text-muted: rgba(240,244,255,0.6);
+    --back-color: rgba(240,244,255,0.5);
+    --footer-text: rgba(240,244,255,0.3);
+    --footer-brand: rgba(240,244,255,0.4);
   }
+  [data-theme="light"] {
+    --navy: #eef3fa;
+    --blue: #d0dff5;
+    --accent: #0077bb;
+    --gold: #c8960a;
+    --white: #1a2a3a;
+    --card-bg: rgba(255,255,255,0.85);
+    --card-border: rgba(0,119,187,0.22);
+    --bg-gradient: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(180,210,245,0.7) 0%, transparent 70%),
+                   #eef3fa;
+    --grid-color: rgba(0,119,187,0.06);
+    --text-main: #1a2a3a;
+    --text-muted: rgba(20,40,70,0.6);
+    --back-color: rgba(20,40,70,0.5);
+    --footer-text: rgba(20,40,70,0.4);
+    --footer-brand: rgba(20,40,70,0.5);
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background-color: var(--navy); color: var(--white); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
-  .bg { position: fixed; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(26,58,110,0.9) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 90% 80%, rgba(0,194,255,0.08) 0%, transparent 60%), var(--navy); }
-  .grid-lines { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(rgba(0,194,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,255,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+  body { background-color: var(--navy); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; transition: background .3s, color .3s; }
+  .bg { position: fixed; inset: 0; z-index: 0; background: var(--bg-gradient); }
+  .grid-lines { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px); background-size: 60px 60px; }
   .wrapper { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* ── THEME TOGGLE ── */
+  .theme-toggle { position: fixed; top: 16px; right: 16px; z-index: 10; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 100px; padding: 6px 14px; font-size: 12px; font-family: 'DM Sans', sans-serif; color: var(--text-main); cursor: pointer; backdrop-filter: blur(12px); transition: all .2s; display: flex; align-items: center; gap: 6px; }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
   .header { text-align: center; margin-bottom: 48px; animation: fadeDown 0.8s ease both; }
   .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(0,194,255,0.1); border: 1px solid rgba(0,194,255,0.3); border-radius: 100px; padding: 6px 14px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
   .badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
-  h1 { font-family: 'Syne', sans-serif; font-size: 42px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 12px; }
+  h1 { font-family: 'Syne', sans-serif; font-size: 42px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 12px; color: var(--text-main); }
   h1 span { color: var(--accent); }
-  .subtitle { font-size: 15px; font-weight: 300; color: rgba(240,244,255,0.55); line-height: 1.6; max-width: 300px; margin: 0 auto; }
+  .subtitle { font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 1.6; max-width: 300px; margin: 0 auto; }
   .divider { width: 40px; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin: 20px auto 0; }
+
   .cards { display: flex; flex-direction: column; gap: 14px; }
-  .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 18px; padding: 20px 22px; cursor: pointer; text-decoration: none; color: var(--white); display: block; position: relative; overflow: hidden; transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), border-color 0.2s, background 0.2s; animation: fadeUp 0.6s ease both; backdrop-filter: blur(12px); }
+  .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 18px; padding: 20px 22px; cursor: pointer; text-decoration: none; color: var(--text-main); display: block; position: relative; overflow: hidden; transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), border-color 0.2s, background 0.2s; animation: fadeUp 0.6s ease both; backdrop-filter: blur(12px); }
   .card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,194,255,0.07) 0%, transparent 60%); opacity: 0; transition: opacity 0.25s; }
-  .card:hover { transform: translateY(-3px) scale(1.01); border-color: rgba(0,194,255,0.4); background: rgba(255,255,255,0.08); }
+  .card:hover { transform: translateY(-3px) scale(1.01); border-color: rgba(0,194,255,0.4); background: var(--card-bg); filter: brightness(1.05); }
   .card:hover::before { opacity: 1; }
   .card:nth-child(1){animation-delay:.15s} .card:nth-child(2){animation-delay:.25s} .card:nth-child(3){animation-delay:.35s} .card:nth-child(4){animation-delay:.45s} .card:nth-child(5){animation-delay:.55s}
+
   .card-top { display: flex; align-items: flex-start; gap: 16px; }
   .card-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
   .icon-1{background:rgba(0,194,255,0.15)} .icon-2{background:rgba(245,200,66,0.15)} .icon-3{background:rgba(100,200,100,0.15)} .icon-4{background:rgba(200,100,255,0.15)} .icon-5{background:rgba(255,130,100,0.15)}
   .card-text { flex: 1; }
-  .card-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; opacity: 0.5; }
-  .card-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; line-height: 1.2; margin-bottom: 6px; }
-  .card-desc { font-size: 13px; font-weight: 300; color: rgba(240,244,255,0.55); line-height: 1.5; }
-  .card-arrow { width: 28px; height: 28px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 4px; transition: background 0.2s, border-color 0.2s; }
-  .card:hover .card-arrow { background: var(--accent); border-color: var(--accent); color: var(--navy); }
+  .card-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; opacity: 0.5; color: var(--text-main); }
+  .card-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; line-height: 1.2; margin-bottom: 6px; color: var(--text-main); }
+  .card-desc { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.5; }
+  .card-arrow { width: 28px; height: 28px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 4px; transition: background 0.2s, border-color 0.2s; color: var(--text-main); }
+  .card:hover .card-arrow { background: var(--accent); border-color: var(--accent); color: #0a1628; }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
-  .tag { font-size: 11px; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.06); color: rgba(240,244,255,0.6); border: 1px solid rgba(255,255,255,0.08); }
+  .tag { font-size: 11px; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.06); color: var(--text-muted); border: 1px solid rgba(255,255,255,0.08); }
+  [data-theme="light"] .tag { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.1); }
+
   .footer { text-align: center; margin-top: 52px; animation: fadeUp 0.6s 0.7s ease both; }
-  .footer-text { font-size: 12px; color: rgba(240,244,255,0.25); }
-  .footer-brand { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: rgba(240,244,255,0.35); margin-top: 8px; }
+  .footer-text { font-size: 12px; color: var(--footer-text); }
+  .footer-brand { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--footer-brand); margin-top: 8px; }
   .footer-brand span { color: var(--accent); }
+
   @keyframes fadeDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
   @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
@@ -56,6 +93,9 @@
 <body>
 <div class="bg"></div>
 <div class="grid-lines"></div>
+
+<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙 Modo escuro</button>
+
 <div class="wrapper">
   <div class="header">
     <div class="badge"><div class="badge-dot"></div>PUC-Rio · Guia do Estudante</div>
@@ -159,5 +199,26 @@
     <p class="footer-brand">PUC <span>Conecta</span> · 2026</p>
   </div>
 </div>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const btn = document.getElementById('themeBtn');
+    if (html.getAttribute('data-theme') === 'light') {
+      html.removeAttribute('data-theme');
+      btn.textContent = '🌙 Modo escuro';
+      localStorage.setItem('puc-theme', 'dark');
+    } else {
+      html.setAttribute('data-theme', 'light');
+      btn.textContent = '☀️ Modo claro';
+      localStorage.setItem('puc-theme', 'light');
+    }
+  }
+  const saved = localStorage.getItem('puc-theme');
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.getElementById('themeBtn').textContent = '☀️ Modo claro';
+  }
+</script>
 </body>
 </html>
