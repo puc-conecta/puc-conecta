@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscrições a Expirar · PUC Conecta</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1a2e4a;--accent:#00c2ff;--gold:#f5c842;--white:#f0f4ff;--card-bg:rgba(255,255,255,0.07);--card-border:rgba(0,194,255,0.18);--text-main:#f0f4ff;--text-muted:rgba(240,244,255,0.6);--grid-color:rgba(0,194,255,0.05);--bg-gradient:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(36,72,130,0.9) 0%,transparent 70%),var(--navy)}
+  [data-theme="light"]{--navy:#eef3fa;--accent:#0077bb;--gold:#c8960a;--white:#1a2a3a;--card-bg:rgba(255,255,255,0.85);--card-border:rgba(0,119,187,0.22);--text-main:#1a2a3a;--text-muted:rgba(20,40,70,0.6);--grid-color:rgba(0,119,187,0.06);--bg-gradient:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(180,210,245,0.7) 0%,transparent 70%),#eef3fa}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--navy);color:var(--text-main);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;transition:background .3s,color .3s}
+  .bg{position:fixed;inset:0;z-index:0;background:var(--bg-gradient)}
+  .grid-lines{position:fixed;inset:0;z-index:0;background-image:linear-gradient(var(--grid-color) 1px,transparent 1px),linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);background-size:60px 60px}
+  .wrapper{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:36px 24px 80px}
+  .theme-toggle{position:fixed;top:16px;right:16px;z-index:10;background:var(--card-bg);border:1px solid var(--card-border);border-radius:100px;padding:6px 14px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text-main);cursor:pointer;backdrop-filter:blur(12px);transition:all .2s}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+  .back{display:inline-flex;align-items:center;gap:8px;color:var(--text-muted);font-size:13px;text-decoration:none;margin-bottom:32px;transition:color .2s}.back:hover{color:var(--accent)}
+  .page-header{margin-bottom:32px;animation:fadeDown .7s ease both}
+  .page-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,80,80,0.1);border:1px solid rgba(255,80,80,0.3);border-radius:100px;padding:5px 12px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#ff6060;margin-bottom:14px}
+  .badge-dot{width:6px;height:6px;background:#ff6060;border-radius:50%;animation:pulse 1.5s infinite}
+  h1{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:10px;color:var(--text-main)}
+  h1 span{color:#ff6060}
+  .page-subtitle{font-size:14px;font-weight:300;color:var(--text-muted);line-height:1.6}
+  .divider{width:36px;height:2px;background:linear-gradient(90deg,#ff6060,transparent);margin:16px 0}
+  .section{margin-bottom:32px;animation:fadeUp .6s ease both}
+  .section:nth-child(3){animation-delay:.1s}.section:nth-child(4){animation-delay:.2s}
+  .section-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;opacity:.8}
+
+  /* Inscrição card */
+  .insc-card{background:var(--card-bg);border:1px solid rgba(255,80,80,0.2);border-radius:18px;padding:20px 22px;margin-bottom:12px;backdrop-filter:blur(12px);transition:transform .2s,border-color .2s}
+  .insc-card:hover{transform:translateY(-2px);border-color:rgba(255,80,80,.4)}
+  .insc-card.urgente{border-color:rgba(255,80,80,.4);background:rgba(255,80,80,.04)}
+  .insc-card.normal{border-color:var(--card-border)}
+  .insc-card.encerrado{opacity:.45;filter:grayscale(.5)}
+  .insc-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:12px}
+  .insc-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .ii-ecoa{background:rgba(255,130,100,.15)}
+  .ii-cc{background:rgba(0,194,255,.15)}
+  .ii-ej{background:rgba(100,200,100,.15)}
+  .ii-gen{background:rgba(245,200,66,.15)}
+  .ii-blank{background:rgba(255,255,255,.08)}
+  .insc-meta .insc-name{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;margin-bottom:3px;color:var(--text-main)}
+  .insc-meta .insc-org{font-size:11px;font-weight:300;color:var(--text-muted)}
+  .insc-desc{font-size:12px;font-weight:300;color:var(--text-muted);line-height:1.7;margin-bottom:12px}
+  .insc-deadline{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+  .deadline-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:.05em}
+  .db-urgente{background:rgba(255,80,80,.15);border:1px solid rgba(255,80,80,.3);color:#ff6060}
+  .db-normal{background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.25);color:var(--gold)}
+  .db-aberto{background:rgba(100,200,100,.1);border:1px solid rgba(100,200,100,.25);color:#7ee87e}
+  .db-encerrado{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--text-muted)}
+  .deadline-text{font-size:12px;color:var(--text-muted)}
+  .insc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+  .insc-tag{font-size:10px;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,.06);color:var(--text-muted);border:1px solid rgba(255,255,255,.08)}
+  .insc-links{display:flex;gap:8px;flex-wrap:wrap}
+  .insc-link{flex:1;min-width:120px;display:flex;align-items:center;justify-content:center;gap:6px;padding:9px;border-radius:10px;font-size:12px;font-weight:500;text-decoration:none;transition:background .2s}
+  .il-red{background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.25);color:#ff8080}.il-red:hover{background:rgba(255,80,80,.2)}
+  .il-blue{background:rgba(0,194,255,.1);border:1px solid rgba(0,194,255,.25);color:var(--accent)}.il-blue:hover{background:rgba(0,194,255,.2)}
+  .il-green{background:rgba(100,200,100,.1);border:1px solid rgba(100,200,100,.25);color:#7ee87e}.il-green:hover{background:rgba(100,200,100,.2)}
+  .il-gold{background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.25);color:var(--gold)}.il-gold:hover{background:rgba(245,200,66,.2)}
+  .il-gray{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--text-muted)}
+
+  /* Blank card para adicionar */
+  .add-card{background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.15);border-radius:18px;padding:20px 22px;margin-bottom:12px;text-align:center}
+  .add-card-text{font-size:13px;color:var(--text-muted);line-height:1.6}
+  .add-card-icon{font-size:28px;margin-bottom:8px;opacity:.4}
+
+  .tip-box{background:rgba(245,200,66,.06);border:1px solid rgba(245,200,66,.2);border-radius:12px;padding:14px 16px;font-size:12px;color:rgba(245,200,66,.85);line-height:1.6;margin-top:8px}
+  .tip-box strong{color:var(--gold)}
+
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="grid-lines"></div>
+<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙 Modo escuro</button>
+<div class="wrapper">
+  <a class="back" href="index.html">← Voltar ao início</a>
+  <div class="page-header">
+    <div class="page-badge"><div class="badge-dot"></div>Corre que fecha!</div>
+    <h1>Inscrições a <span>Expirar</span></h1>
+    <p class="page-subtitle">Processos seletivos, programas e oportunidades com prazo — não deixa passar.</p>
+    <div class="divider"></div>
+  </div>
+
+  <!-- ABERTAS AGORA -->
+  <div class="section">
+    <div class="section-title">🔥 Abertas agora</div>
+
+    <div class="insc-card urgente">
+      <div class="insc-head">
+        <div class="insc-icon ii-ecoa">🌱</div>
+        <div class="insc-meta">
+          <div class="insc-name">ECOA Summer Camp</div>
+          <div class="insc-org">ECOA — Empreendedorismo & Inovação PUC-Rio</div>
+        </div>
+      </div>
+      <div class="insc-desc">O maior programa de empreendedorismo da PUC-Rio. Desenvolva sua ideia com mentoria, workshops intensivos e apresentação para investidores. Aberto para todos os cursos.</div>
+      <div class="insc-deadline">
+        <span class="deadline-badge db-aberto">🟢 Inscrições abertas</span>
+        <span class="deadline-text">Confira o prazo no site do ECOA</span>
+      </div>
+      <div class="insc-tags">
+        <span class="insc-tag">Todos os cursos</span>
+        <span class="insc-tag">Empreendedorismo</span>
+        <span class="insc-tag">Mentoria</span>
+        <span class="insc-tag">Horas Complementares</span>
+      </div>
+      <div class="insc-links">
+        <a class="insc-link il-red" href="https://ecoa.puc-rio.br" target="_blank">🌱 Inscrever-se ↗</a>
+        <a class="insc-link il-blue" href="https://www.instagram.com/ecoapucrio" target="_blank">📸 Instagram ↗</a>
+      </div>
+    </div>
+
+    <div class="insc-card normal">
+      <div class="insc-head">
+        <div class="insc-icon ii-cc">🤝</div>
+        <div class="insc-meta">
+          <div class="insc-name">Consulting Club — Processo Seletivo</div>
+          <div class="insc-org">Consulting Club PUC-Rio</div>
+        </div>
+      </div>
+      <div class="insc-desc">Quer aprender a resolver cases e entrar no mercado de consultoria? O processo seletivo do Consulting Club abre periodicamente. Aberto para todos os cursos.</div>
+      <div class="insc-deadline">
+        <span class="deadline-badge db-normal">📋 Verificar prazo</span>
+        <span class="deadline-text">Confira o Linktree para datas atuais</span>
+      </div>
+      <div class="insc-tags">
+        <span class="insc-tag">Todos os cursos</span>
+        <span class="insc-tag">Consultoria</span>
+        <span class="insc-tag">Cases</span>
+        <span class="insc-tag">Networking</span>
+      </div>
+      <div class="insc-links">
+        <a class="insc-link il-blue" href="https://linktr.ee/consultingclub" target="_blank">🔗 Linktree ↗</a>
+        <a class="insc-link il-blue" href="https://www.instagram.com/consultingclubpucrio" target="_blank">📸 Instagram ↗</a>
+      </div>
+    </div>
+
+    <div class="add-card">
+      <div class="add-card-icon">➕</div>
+      <div class="add-card-text">Tem uma inscrição com prazo chegando?<br>Adicione aqui para avisar outros alunos!</div>
+    </div>
+
+    <div class="tip-box"><strong>💡 Como manter atualizado:</strong> Sempre que uma liga, programa ou evento abrir inscrições, adicione um card aqui com o link direto e a data de encerramento. Fontes: Instagram das ligas, e-mails da PUC e grupos de WhatsApp.</div>
+  </div>
+
+  <!-- EM BREVE -->
+  <div class="section">
+    <div class="section-title">📌 Em breve — fique de olho</div>
+
+    <div class="insc-card normal">
+      <div class="insc-head">
+        <div class="insc-icon ii-ej">🏢</div>
+        <div class="insc-meta">
+          <div class="insc-name">Empresa Júnior — Processo Seletivo</div>
+          <div class="insc-org">Empresa Júnior PUC-Rio</div>
+        </div>
+      </div>
+      <div class="insc-desc">A Empresa Júnior abre processo seletivo a cada semestre. Uma das experiências práticas mais valorizadas no currículo — você trabalha em projetos reais de consultoria.</div>
+      <div class="insc-deadline">
+        <span class="deadline-badge db-normal">📅 A confirmar</span>
+        <span class="deadline-text">Siga o Instagram para não perder</span>
+      </div>
+      <div class="insc-tags">
+        <span class="insc-tag">Consultoria</span>
+        <span class="insc-tag">Liderança</span>
+        <span class="insc-tag">Projetos reais</span>
+      </div>
+      <div class="insc-links">
+        <a class="insc-link il-green" href="https://www.instagram.com/empresajunior" target="_blank">📸 @empresajunior ↗</a>
+      </div>
+    </div>
+
+    <div class="insc-card normal">
+      <div class="insc-head">
+        <div class="insc-icon ii-gen">💡</div>
+        <div class="insc-meta">
+          <div class="insc-name">Gênesis — Pré-incubação</div>
+          <div class="insc-org">Instituto Gênesis PUC-Rio</div>
+        </div>
+      </div>
+      <div class="insc-desc">O Gênesis abre periodicamente processos para pré-incubação de startups e projetos inovadores. Se você tem uma ideia de negócio, esse é o caminho.</div>
+      <div class="insc-deadline">
+        <span class="deadline-badge db-normal">📅 A confirmar</span>
+        <span class="deadline-text">Confira o site do Gênesis</span>
+      </div>
+      <div class="insc-tags">
+        <span class="insc-tag">Startups</span>
+        <span class="insc-tag">Incubação</span>
+        <span class="insc-tag">Todos os cursos</span>
+      </div>
+      <div class="insc-links">
+        <a class="insc-link il-gold" href="https://genesis.puc-rio.br" target="_blank">🌐 Site Gênesis ↗</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+function toggleTheme(){const h=document.documentElement,b=document.getElementById('themeBtn');if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');b.textContent='🌙 Modo escuro';localStorage.setItem('puc-theme','dark')}else{h.setAttribute('data-theme','light');b.textContent='☀️ Modo claro';localStorage.setItem('puc-theme','light')}}
+const saved=localStorage.getItem('puc-theme');if(saved==='light'){document.documentElement.setAttribute('data-theme','light');document.getElementById('themeBtn').textContent='☀️ Modo claro'}
+</script>
+</body></html>
