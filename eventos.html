@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acontecendo na PUC · PUC Conecta</title>
+<title>Conheça a PUC · PUC Conecta</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{--navy:#1a2e4a;--accent:#00c2ff;--gold:#f5c842;--white:#f0f4ff;--card-bg:rgba(255,255,255,0.07);--card-border:rgba(0,194,255,0.18);--text-main:#f0f4ff;--text-muted:rgba(240,244,255,0.6);--grid-color:rgba(0,194,255,0.05);--bg-gradient:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(36,72,130,0.9) 0%,transparent 70%),var(--navy)}
@@ -12,63 +12,31 @@
   .bg{position:fixed;inset:0;z-index:0;background:var(--bg-gradient)}
   .grid-lines{position:fixed;inset:0;z-index:0;background-image:linear-gradient(var(--grid-color) 1px,transparent 1px),linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);background-size:60px 60px}
   .wrapper{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:36px 24px 80px}
-  .theme-toggle{position:fixed;top:16px;right:16px;z-index:10;background:var(--card-bg);border:1px solid var(--card-border);border-radius:100px;padding:6px 14px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text-main);cursor:pointer;backdrop-filter:blur(12px);transition:all .2s}
+  .theme-toggle{position:fixed;top:16px;right:16px;z-index:10;background:var(--card-bg);border:1px solid var(--card-border);border-radius:100px;padding:6px 14px;font-size:15px;font-family:'DM Sans',sans-serif;color:var(--text-main);cursor:pointer;backdrop-filter:blur(12px);transition:all .2s}
   .theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
-  .back{display:inline-flex;align-items:center;gap:8px;color:var(--text-muted);font-size:13px;text-decoration:none;margin-bottom:32px;transition:color .2s}.back:hover{color:var(--accent)}
-  .page-header{margin-bottom:32px;animation:fadeDown .7s ease both}
-  .page-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(200,100,255,0.1);border:1px solid rgba(200,100,255,0.3);border-radius:100px;padding:5px 12px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#d87eff;margin-bottom:14px}
-  h1{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:10px;color:var(--text-main)}
+  .back{display:inline-flex;align-items:center;gap:8px;color:var(--text-muted);font-size:16px;text-decoration:none;margin-bottom:32px;transition:color .2s}.back:hover{color:var(--accent)}
+  .page-header{margin-bottom:36px;animation:fadeDown .7s ease both}
+  .page-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,194,255,0.1);border:1px solid rgba(0,194,255,0.3);border-radius:100px;padding:5px 12px;font-size:15px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-family:'Syne',sans-serif;font-size:34px;font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:10px;color:var(--text-main)}
   h1 span{color:var(--accent)}
-  .page-subtitle{font-size:14px;font-weight:300;color:var(--text-muted);line-height:1.6}
-  .divider{width:36px;height:2px;background:linear-gradient(90deg,#d87eff,transparent);margin:16px 0}
+  .page-subtitle{font-size:15px;font-weight:300;color:var(--text-muted);line-height:1.6}
+  .divider{width:36px;height:2px;background:linear-gradient(90deg,var(--accent),transparent);margin:16px 0}
   .section{margin-bottom:32px;animation:fadeUp .6s ease both}
-  .section:nth-child(3){animation-delay:.1s}.section:nth-child(4){animation-delay:.2s}.section:nth-child(5){animation-delay:.3s}
-  .section-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;opacity:.8}
-
-  /* Event cards */
-  .event-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:18px 20px;margin-bottom:10px;display:flex;gap:16px;backdrop-filter:blur(12px);text-decoration:none;color:var(--text-main);transition:transform .2s,border-color .2s}
-  .event-card:hover{transform:translateY(-2px);border-color:rgba(0,194,255,.4)}
-  .event-date{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:44px;background:rgba(0,194,255,.1);border:1px solid rgba(0,194,255,.2);border-radius:10px;padding:8px 6px}
-  .event-day{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--accent);line-height:1}
-  .event-month{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,194,255,.6);margin-top:2px}
-  .event-body{flex:1}
-  .event-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:4px;color:var(--text-main)}
-  .event-meta{font-size:11px;font-weight:300;color:var(--text-muted);line-height:1.5}
-  .event-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:100px;margin-top:6px;margin-right:4px}
-  .tag-ecoa{background:rgba(255,130,100,.1);border:1px solid rgba(255,130,100,.25);color:#ff9070}
-  .tag-puc{background:rgba(0,194,255,.1);border:1px solid rgba(0,194,255,.25);color:var(--accent)}
-  .tag-festa{background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.25);color:var(--gold)}
-  .tag-urgente{background:rgba(255,80,80,.1);border:1px solid rgba(255,80,80,.3);color:#ff6060}
-
-  /* Prazo limitado card */
-  .prazo-card{background:rgba(255,80,80,.05);border:1px solid rgba(255,80,80,.2);border-radius:16px;padding:16px 18px;margin-bottom:10px;backdrop-filter:blur(12px);text-decoration:none;color:var(--text-main);display:block;transition:transform .2s,border-color .2s}
-  .prazo-card:hover{transform:translateY(-2px);border-color:rgba(255,80,80,.4)}
-  .prazo-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-  .prazo-badge{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:100px;background:rgba(255,80,80,.15);border:1px solid rgba(255,80,80,.3);color:#ff6060}
-  .prazo-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text-main)}
-  .prazo-desc{font-size:12px;font-weight:300;color:var(--text-muted);line-height:1.5;margin-bottom:8px}
-  .prazo-deadline{font-size:11px;color:#ff8080;font-weight:500}
-
-  /* Recurring events */
-  .recur-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:16px 18px;margin-bottom:10px;backdrop-filter:blur(12px);display:flex;gap:14px;align-items:flex-start}
-  .recur-icon{font-size:22px;flex-shrink:0}
-  .recur-body{}
-  .recur-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:3px;color:var(--text-main)}
-  .recur-desc{font-size:12px;font-weight:300;color:var(--text-muted);line-height:1.5}
-  .recur-freq{display:inline-block;font-size:10px;padding:2px 8px;border-radius:100px;margin-top:6px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.2);color:var(--gold)}
-
-  /* News */
-  .news-link{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:16px 18px;text-decoration:none;color:var(--text-main);display:flex;align-items:center;gap:14px;transition:transform .2s,border-color .2s;backdrop-filter:blur(12px);margin-bottom:10px}
-  .news-link:hover{transform:translateY(-2px);border-color:rgba(0,194,255,.4)}
-  .news-icon{font-size:22px}
-  .news-body .news-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:3px;color:var(--text-main)}
-  .news-body .news-desc{font-size:12px;font-weight:300;color:var(--text-muted)}
-  .news-arrow{opacity:.35;font-size:14px;margin-left:auto;transition:opacity .2s,color .2s}
-  .news-link:hover .news-arrow{opacity:1;color:var(--accent)}
-
-  .tip-box{background:rgba(245,200,66,.06);border:1px solid rgba(245,200,66,.2);border-radius:12px;padding:14px 16px;font-size:12px;color:rgba(245,200,66,.85);line-height:1.6;margin-top:8px}
+  .section:nth-child(2){animation-delay:.1s}.section:nth-child(3){animation-delay:.2s}
+  .section-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;opacity:.8}
+  .card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:18px 20px;text-decoration:none;color:var(--text-main);display:block;margin-bottom:10px;transition:transform .2s,border-color .2s,background .2s;backdrop-filter:blur(12px)}
+  .card:hover{transform:translateY(-2px);border-color:rgba(0,194,255,.4);filter:brightness(1.05)}
+  .card-row{display:flex;align-items:center;gap:14px}
+  .card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+  .ic1{background:rgba(0,194,255,0.12)}.ic2{background:rgba(245,200,66,0.12)}.ic3{background:rgba(100,200,100,0.12)}.ic4{background:rgba(255,130,100,0.12)}
+  .card-body{flex:1}
+  .card-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:3px;color:var(--text-main)}
+  .card-desc{font-size:15px;font-weight:300;color:var(--text-muted);line-height:1.5}
+  .card-arrow{font-size:15px;opacity:.35;transition:opacity .2s,transform .2s,color .2s}
+  .card:hover .card-arrow{opacity:1;transform:translateX(4px);color:var(--accent)}
+  .tip-box{background:rgba(245,200,66,.06);border:1px solid rgba(245,200,66,.2);border-radius:12px;padding:14px 16px;font-size:15px;color:rgba(245,200,66,.85);line-height:1.6}
   .tip-box strong{color:var(--gold)}
-
+  [data-theme="light"] .tip-box{background:rgba(200,150,10,.07);border-color:rgba(200,150,10,.25);color:rgba(130,90,0,.9)}
   @keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 </style>
@@ -77,143 +45,73 @@
 <div class="bg"></div><div class="grid-lines"></div>
 <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙 Modo escuro</button>
 <div class="wrapper">
-  <a class="back" href="index.html">← Voltar ao início</a>
+<a class="back" href="index.html">← Voltar ao início</a>
   <div class="page-header">
-    <div class="page-badge">📅 Fique por dentro</div>
-    <h1>Acontecendo na <span>PUC</span></h1>
-    <p class="page-subtitle">Eventos da semana, festas, notícias e o que está rolando no campus agora.</p>
+    <div class="page-badge">🏛️ Começo de tudo</div>
+    <h1>Conheça a <span>PUC</span></h1>
+    <p class="page-subtitle">Entenda como funciona a universidade, descubra os espaços do campus e encontre o que você precisa.</p>
     <div class="divider"></div>
   </div>
 
-  <!-- PRAZO LIMITADO -->
   <div class="section">
-    <div class="section-title">⏳ Prazo limitado</div>
+    <div class="section-title">Links oficiais</div>
 
-    <a class="prazo-card" href="https://ecoa.puc-rio.br" target="_blank">
-      <div class="prazo-header"><span class="prazo-badge">🔥 Inscrições abertas</span></div>
-      <div class="prazo-title">ECOA Summer Camp</div>
-      <div class="prazo-desc">O maior programa de empreendedorismo da PUC-Rio. Transforme sua ideia em projeto real com mentoria, workshops e network.</div>
-      <div class="prazo-deadline">⏰ Confira o prazo no site do ECOA</div>
+    <a class="card" href="https://www.puc-rio.br/manualdocalouro/" target="_blank">
+      <div class="card-row">
+        <div class="card-icon ic1">📖</div>
+        <div class="card-body">
+          <div class="card-title">Manual do Calouro</div>
+          <div class="card-desc">O guia oficial da PUC com tudo que você precisa pro seu primeiro semestre</div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </div>
     </a>
 
-    <a class="prazo-card" href="https://linktr.ee/consultingclub" target="_blank">
-      <div class="prazo-header"><span class="prazo-badge">📋 Processo seletivo</span></div>
-      <div class="prazo-title">Consulting Club — Processo Seletivo</div>
-      <div class="prazo-desc">Quer aprender a resolver cases e entrar no mercado de consultoria? As inscrições para o semestre abrem periodicamente.</div>
-      <div class="prazo-deadline">⏰ Confira o prazo no Linktree do Club</div>
+    <a class="card" href="https://www.puc-rio.br/sobrepuc/depto/dar/procedimentos.html" target="_blank">
+      <div class="card-row">
+        <div class="card-icon ic2">🎓</div>
+        <div class="card-body">
+          <div class="card-title">Sobre a PUC & Procedimentos</div>
+          <div class="card-desc">Matrícula, documentos, prazos e tudo que o aluno precisa para não perder informações importantes.</div>
+        </div>
+        <div class="card-arrow">↗</div>
+      </div>
     </a>
 
-    <div class="prazo-card">
-      <div class="prazo-header"><span class="prazo-badge">✏️ Para preencher</span></div>
-      <div class="prazo-title">Adicione aqui o próximo prazo</div>
-      <div class="prazo-desc">Palestras, congressos, processos seletivos de ligas, food trucks especiais — qualquer coisa com data limite.</div>
-      <div class="prazo-deadline">⏰ Data: — / — / —</div>
-    </div>
-
-    <div class="tip-box"><strong>💡 Como manter atualizado:</strong> Sempre que aparecer uma oportunidade com prazo, adicione um card aqui. Fontes: Instagram da PUC, e-mails das ligas e grupos de WhatsApp do curso.</div>
-  </div>
-
-  <!-- PRÓXIMOS EVENTOS -->
-  <div class="section">
-    <div class="section-title">🔥 Próximos eventos</div>
-
-    <div class="event-card">
-      <div class="event-date"><div class="event-day">✏️</div><div class="event-month">mês</div></div>
-      <div class="event-body">
-        <div class="event-title">Adicione o próximo evento aqui</div>
-        <div class="event-meta">📍 Local · 🕐 Horário</div>
-        <span class="event-tag tag-puc">PUC</span>
+    <a class="card" href="https://www.puc-rio.br/sobrepuc/depto/dar/calendario/" target="_blank">
+      <div class="card-row">
+        <div class="card-icon ic3">📅</div>
+        <div class="card-body">
+          <div class="card-title">Calendário Acadêmico</div>
+          <div class="card-desc">Veja datas de matrícula, provas, trancamento, início das aulas e principais prazos da universidade.</div>
+        </div>
+        <div class="card-arrow">↗</div>
       </div>
-    </div>
-
-    <div class="event-card">
-      <div class="event-date"><div class="event-day">✏️</div><div class="event-month">mês</div></div>
-      <div class="event-body">
-        <div class="event-title">Segundo evento da semana</div>
-        <div class="event-meta">📍 Local · 🕐 Horário</div>
-        <span class="event-tag tag-ecoa">ECOA</span>
-      </div>
-    </div>
-
-    <div class="tip-box"><strong>💡 Como manter atualizado:</strong> Toda semana, edite os cards acima com os eventos reais. Fonte: Instagram da PUC-Rio e e-mails institucionais.</div>
-  </div>
-
-  <!-- EVENTOS FIXOS -->
-  <div class="section">
-    <div class="section-title">🗓️ Eventos fixos do calendário</div>
-
-    <div class="recur-card">
-      <div class="recur-icon">🎉</div>
-      <div class="recur-body">
-        <div class="recur-title">A Vila</div>
-        <div class="recur-desc">A festa mais tradicional da PUC-Rio. Acontece toda quinta-feira no início de cada período letivo, na Vila dos Diretórios. Integração entre calouros e veteranos de todos os cursos.</div>
-        <span class="recur-freq">📅 Toda quinta · Início de cada semestre</span>
-      </div>
-    </div>
-
-    <div class="recur-card">
-      <div class="recur-icon">🌸</div>
-      <div class="recur-body">
-        <div class="recur-title">Festa Junina da PUC</div>
-        <div class="recur-desc">Festa junina tradicional no campus com quadrilha, comidas típicas, forró e muita animação. Um dos eventos mais esperados do primeiro semestre.</div>
-        <span class="recur-freq">📅 Junho · Data a confirmar</span>
-      </div>
-    </div>
-
-    <div class="recur-card">
-      <div class="recur-icon">🎨</div>
-      <div class="recur-body">
-        <div class="recur-title">Semana de Design</div>
-        <div class="recur-desc">Semana acadêmica do curso de Artes & Design com palestras, workshops, exposições e cases com profissionais do mercado criativo.</div>
-        <span class="recur-freq">📅 Data a confirmar · Siga @dad.pucrio</span>
-      </div>
-    </div>
-
-    <div class="recur-card">
-      <div class="recur-icon">🧠</div>
-      <div class="recur-body">
-        <div class="recur-title">Semana de Psicologia</div>
-        <div class="recur-desc">Semana acadêmica do curso de Psicologia com palestras, rodas de conversa e atividades clínicas abertas à comunidade.</div>
-        <span class="recur-freq">📅 Data a confirmar · Siga o CA de Psico</span>
-      </div>
-    </div>
-
-    <div class="recur-card">
-      <div class="recur-icon">🛍️</div>
-      <div class="recur-body">
-        <div class="recur-title">Feiras no Campus</div>
-        <div class="recur-desc">Feiras de artesanato, gastronomia e produtos estudantis que acontecem periodicamente no campus. Fique de olho nas redes sociais da PUC para as próximas edições.</div>
-        <span class="recur-freq">📅 Datas variadas · A confirmar</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- NOTÍCIAS -->
-  <div class="section">
-    <div class="section-title">📰 Notícias & Comunicados</div>
-
-    <a class="news-link" href="https://www.puc-rio.br/noticias/" target="_blank">
-      <div class="news-icon">🗞️</div>
-      <div class="news-body">
-        <div class="news-title">Portal de Notícias PUC-Rio</div>
-        <div class="news-desc">Novidades, pesquisas, eventos institucionais e comunicados oficiais</div>
-      </div>
-      <div class="news-arrow">↗</div>
-    </a>
-
-    <a class="news-link" href="https://www.instagram.com/pucriooficial" target="_blank">
-      <div class="news-icon">📸</div>
-      <div class="news-body">
-        <div class="news-title">@pucriooficial no Instagram</div>
-        <div class="news-desc">O jeito mais rápido de ficar por dentro do que rola no campus</div>
-      </div>
-      <div class="news-arrow">↗</div>
     </a>
   </div>
 
+  <div class="section">
+    <div class="section-title">Criado por nós 🛠️</div>
+
+    <a class="card" href="mapa.html">
+      <div class="card-row">
+        <div class="card-icon ic3">🗺️</div>
+        <div class="card-body">
+          <div class="card-title">Mapa do Campus</div>
+          <div class="card-desc">Onde fica cada prédio, lab, restaurante e espaço de descanso</div>
+        </div>
+        <div class="card-arrow">→</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="tip-box">
+    <strong>💡 Dica de calouro:</strong> O Manual do Calouro tem informações sobre o Nível de Português — uma prova obrigatória que muita gente esquece de fazer no primeiro semestre!
+  </div>
 </div>
+
 <script>
-function toggleTheme(){const h=document.documentElement,b=document.getElementById('themeBtn');if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');b.textContent='🌙 Modo escuro';localStorage.setItem('puc-theme','dark')}else{h.setAttribute('data-theme','light');b.textContent='☀️ Modo claro';localStorage.setItem('puc-theme','light')}}
-const saved=localStorage.getItem('puc-theme');if(saved==='light'){document.documentElement.setAttribute('data-theme','light');document.getElementById('themeBtn').textContent='☀️ Modo claro'}
+  function toggleTheme(){const h=document.documentElement,b=document.getElementById('themeBtn');if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');b.textContent='🌙 Modo escuro';localStorage.setItem('puc-theme','dark')}else{h.setAttribute('data-theme','light');b.textContent='☀️ Modo claro';localStorage.setItem('puc-theme','light')}}
+  const saved=localStorage.getItem('puc-theme');if(saved==='light'){document.documentElement.setAttribute('data-theme','light');document.getElementById('themeBtn').textContent='☀️ Modo claro'}
 </script>
 </body></html>
