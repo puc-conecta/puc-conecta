@@ -85,20 +85,28 @@
   .mapa-pdf-btn:hover{background:rgba(0,194,255,.22)}
   .mapa-visual-img{width:100%;border-radius:16px;border:1px solid var(--card-border);display:block}
   .mapa-visual-credit{font-size:11px;color:var(--text-muted);text-align:center;margin-top:8px}
+  
+  .top-controls{position:fixed;top:16px;right:16px;z-index:10;display:flex;gap:8px}
+  .ctrl-btn{background:var(--card-bg);border:1px solid var(--card-border);border-radius:100px;padding:6px 14px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text-main);cursor:pointer;backdrop-filter:blur(12px);transition:all .2s}
+  .ctrl-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .ctrl-btn.active-lang{background:rgba(0,194,255,.15);border-color:var(--accent);color:var(--accent)}
   @keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 <div class="bg"></div><div class="grid-lines"></div>
-<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙 Modo escuro</button>
+<div class="top-controls">
+  <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+  <button class="ctrl-btn" onclick="toggleLang()" id="langBtn">EN</button>
+</div>
 <div class="wrapper">
-  <a class="back" href="index.html">← Voltar ao início</a>
+  <a class="back" href="index.html" data-pt="← Voltar ao início" data-en="← Back to home">← Voltar ao início</a>
 
   <div class="page-header">
-    <div class="page-badge">🗺️ Navegue pelo campus</div>
-    <h1>Mapa do <span>Campus</span></h1>
-    <p class="page-subtitle">Toque em qualquer prédio para ver detalhes. Campus da Gávea, dentro da Reserva da Tijuca.</p>
+    <div class="page-badge" data-pt="🗺️ Navegue pelo campus" data-en="🗺️ Navigate the campus">🗺️ Navegue pelo campus</div>
+    <h1 data-pt="Mapa do <span>Campus</span>" data-en="Campus <span>Map</span>">Mapa do <span>Campus</span></h1>
+    <p class="page-subtitle" data-pt="Toque em qualquer prédio para ver detalhes. Campus da Gávea, dentro da Reserva da Tijuca." data-en="Tap any building to see details. Gávea campus, inside the Tijuca Reserve.">Toque em qualquer prédio para ver detalhes. Campus da Gávea, dentro da Reserva da Tijuca.</p>
     <div class="divider"></div>
   </div>
 
@@ -167,7 +175,7 @@
   </div>
 
   <div class="panel-tabs">
-    <button class="ptab active" onclick="showPanel('predios',this)">🏛️ Prédios & Departamentos</button>
+    <button class="ptab active" onclick="showPanel('predios',this)" data-pt="🏛️ Prédios & Departamentos" data-en="🏛️ Buildings & Departments">🏛️ Prédios & Departamentos</button>
   </div>
 
   <div id="predios" class="panel active">
