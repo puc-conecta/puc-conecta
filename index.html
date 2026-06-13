@@ -5,140 +5,112 @@
 <title>PUC Conecta</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
-  /* ── TEMA ── */
-  :root {
-    --navy: #1a2e4a;
-    --blue: #1a3a6e;
-    --accent: #00c2ff;
-    --gold: #f5c842;
-    --white: #f0f4ff;
-    --card-bg: rgba(255,255,255,0.07);
-    --card-border: rgba(0,194,255,0.18);
-    --bg-gradient: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(36,72,130,0.9) 0%, transparent 70%),
-                   radial-gradient(ellipse 40% 40% at 90% 80%, rgba(0,194,255,0.08) 0%, transparent 60%),
-                   var(--navy);
-    --grid-color: rgba(0,194,255,0.05);
-    --text-main: #f0f4ff;
-    --text-muted: rgba(240,244,255,0.6);
-    --back-color: rgba(240,244,255,0.5);
-    --footer-text: rgba(240,244,255,0.3);
-    --footer-brand: rgba(240,244,255,0.4);
-  }
-  [data-theme="light"] {
-    --navy: #eef3fa;
-    --blue: #d0dff5;
-    --accent: #0077bb;
-    --gold: #c8960a;
-    --white: #1a2a3a;
-    --card-bg: rgba(255,255,255,0.85);
-    --card-border: rgba(0,119,187,0.22);
-    --bg-gradient: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(180,210,245,0.7) 0%, transparent 70%),
-                   #eef3fa;
-    --grid-color: rgba(0,119,187,0.06);
-    --text-main: #1a2a3a;
-    --text-muted: rgba(20,40,70,0.6);
-    --back-color: rgba(20,40,70,0.5);
-    --footer-text: rgba(20,40,70,0.4);
-    --footer-brand: rgba(20,40,70,0.5);
-  }
+  :root{--navy:#1a2e4a;--blue:#1a3a6e;--accent:#00c2ff;--gold:#f5c842;--white:#f0f4ff;--card-bg:rgba(255,255,255,0.07);--card-border:rgba(0,194,255,0.18);--text-main:#f0f4ff;--text-muted:rgba(240,244,255,0.6);--grid-color:rgba(0,194,255,0.05);--bg-gradient:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(36,72,130,0.9) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 90% 80%,rgba(0,194,255,0.08) 0%,transparent 60%),var(--navy)}
+  [data-theme="light"]{--navy:#eef3fa;--accent:#0077bb;--gold:#c8960a;--white:#1a2a3a;--card-bg:rgba(255,255,255,0.85);--card-border:rgba(0,119,187,0.22);--text-main:#1a2a3a;--text-muted:rgba(20,40,70,0.6);--grid-color:rgba(0,119,187,0.06);--bg-gradient:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(180,210,245,0.7) 0%,transparent 70%),#eef3fa}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background-color:var(--navy);color:var(--text-main);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;transition:background .3s,color .3s}
+  .bg{position:fixed;inset:0;z-index:0;background:var(--bg-gradient)}
+  .grid-lines{position:fixed;inset:0;z-index:0;background-image:linear-gradient(var(--grid-color) 1px,transparent 1px),linear-gradient(90deg,var(--grid-color) 1px,transparent 1px);background-size:60px 60px}
+  .wrapper{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:48px 24px 80px}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background-color: var(--navy); color: var(--text-main); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; transition: background .3s, color .3s; }
-  .bg { position: fixed; inset: 0; z-index: 0; background: var(--bg-gradient); }
-  .grid-lines { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px); background-size: 60px 60px; }
-  .wrapper { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; padding: 48px 24px 80px; }
+  /* CONTROLS */
+  .top-controls{position:fixed;top:16px;right:16px;z-index:10;display:flex;gap:8px}
+  .ctrl-btn{background:var(--card-bg);border:1px solid var(--card-border);border-radius:100px;padding:6px 14px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text-main);cursor:pointer;backdrop-filter:blur(12px);transition:all .2s}
+  .ctrl-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .ctrl-btn.active-lang{background:rgba(0,194,255,.15);border-color:var(--accent);color:var(--accent)}
 
-  /* ── THEME TOGGLE ── */
-  .theme-toggle { position: fixed; top: 16px; right: 16px; z-index: 10; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 100px; padding: 6px 14px; font-size: 12px; font-family: 'DM Sans', sans-serif; color: var(--text-main); cursor: pointer; backdrop-filter: blur(12px); transition: all .2s; display: flex; align-items: center; gap: 6px; }
-  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .header{text-align:center;margin-bottom:48px;animation:fadeDown 0.8s ease both}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,194,255,0.1);border:1px solid rgba(0,194,255,0.3);border-radius:100px;padding:6px 14px;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+  .badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+  h1{font-family:'Syne',sans-serif;font-size:44px;font-weight:800;line-height:1.05;letter-spacing:-0.02em;margin-bottom:12px;color:var(--text-main)}
+  h1 span{color:var(--accent)}
+  .subtitle{font-size:15px;font-weight:300;color:var(--text-muted);line-height:1.6;max-width:300px;margin:0 auto}
+  .divider{width:40px;height:2px;background:linear-gradient(90deg,var(--accent),transparent);margin:20px auto 0}
 
-  .header { text-align: center; margin-bottom: 48px; animation: fadeDown 0.8s ease both; }
-  .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(0,194,255,0.1); border: 1px solid rgba(0,194,255,0.3); border-radius: 100px; padding: 6px 14px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-  .badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
-  h1 { font-family: 'Syne', sans-serif; font-size: 42px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 12px; color: var(--text-main); }
-  h1 span { color: var(--accent); }
-  .subtitle { font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 1.6; max-width: 300px; margin: 0 auto; }
-  .divider { width: 40px; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin: 20px auto 0; }
+  .cards{display:flex;flex-direction:column;gap:14px}
+  .card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:18px;padding:20px 22px;cursor:pointer;text-decoration:none;color:var(--text-main);display:block;position:relative;overflow:hidden;transition:transform 0.25s cubic-bezier(.34,1.56,.64,1),border-color 0.2s,background 0.2s;animation:fadeUp 0.6s ease both;backdrop-filter:blur(12px)}
+  .card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,194,255,0.07) 0%,transparent 60%);opacity:0;transition:opacity 0.25s}
+  .card:hover{transform:translateY(-3px) scale(1.01);border-color:rgba(0,194,255,0.4);filter:brightness(1.05)}
+  .card:hover::before{opacity:1}
+  .card:nth-child(1){animation-delay:.15s}.card:nth-child(2){animation-delay:.25s}.card:nth-child(3){animation-delay:.35s}.card:nth-child(4){animation-delay:.45s}.card:nth-child(5){animation-delay:.55s}.card:nth-child(6){animation-delay:.65s}
+  .card-top{display:flex;align-items:flex-start;gap:16px}
+  .card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .icon-1{background:rgba(0,194,255,0.15)}.icon-2{background:rgba(245,200,66,0.15)}.icon-3{background:rgba(100,200,100,0.15)}.icon-4{background:rgba(200,100,255,0.15)}.icon-5{background:rgba(255,130,100,0.15)}.icon-6{background:rgba(255,80,80,0.15)}
+  .card-text{flex:1}
+  .card-label{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:4px;opacity:0.5;color:var(--text-main)}
+  .card-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;line-height:1.2;margin-bottom:6px;color:var(--text-main)}
+  .card-desc{font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.5}
+  .card-arrow{width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:4px;transition:background 0.2s,border-color 0.2s;color:var(--text-main)}
+  .card:hover .card-arrow{background:var(--accent);border-color:var(--accent);color:#0a1628}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06)}
+  .tag{font-size:11px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,0.06);color:var(--text-muted);border:1px solid rgba(255,255,255,0.08)}
+  [data-theme="light"] .tag{background:rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.1)}
 
-  .cards { display: flex; flex-direction: column; gap: 14px; }
-  .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 18px; padding: 20px 22px; cursor: pointer; text-decoration: none; color: var(--text-main); display: block; position: relative; overflow: hidden; transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), border-color 0.2s, background 0.2s; animation: fadeUp 0.6s ease both; backdrop-filter: blur(12px); }
-  .card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,194,255,0.07) 0%, transparent 60%); opacity: 0; transition: opacity 0.25s; }
-  .card:hover { transform: translateY(-3px) scale(1.01); border-color: rgba(0,194,255,0.4); background: var(--card-bg); filter: brightness(1.05); }
-  .card:hover::before { opacity: 1; }
-  .card:nth-child(1){animation-delay:.15s} .card:nth-child(2){animation-delay:.25s} .card:nth-child(3){animation-delay:.35s} .card:nth-child(4){animation-delay:.45s} .card:nth-child(5){animation-delay:.55s}
+  .footer{text-align:center;margin-top:52px;animation:fadeUp 0.6s 0.7s ease both}
+  .footer-text{font-size:12px;color:rgba(240,244,255,0.3)}
+  .footer-brand{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(240,244,255,0.4);margin-top:8px}
+  .footer-brand span{color:var(--accent)}
+  [data-theme="light"] .footer-text{color:rgba(20,40,70,0.35)}
+  [data-theme="light"] .footer-brand{color:rgba(20,40,70,0.45)}
 
-  .card-top { display: flex; align-items: flex-start; gap: 16px; }
-  .card-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-  .icon-1{background:rgba(0,194,255,0.15)} .icon-2{background:rgba(245,200,66,0.15)} .icon-3{background:rgba(100,200,100,0.15)} .icon-4{background:rgba(200,100,255,0.15)} .icon-5{background:rgba(255,130,100,0.15)}
-  .card-text { flex: 1; }
-  .card-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; opacity: 0.5; color: var(--text-main); }
-  .card-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; line-height: 1.2; margin-bottom: 6px; color: var(--text-main); }
-  .card-desc { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.5; }
-  .card-arrow { width: 28px; height: 28px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 4px; transition: background 0.2s, border-color 0.2s; color: var(--text-main); }
-  .card:hover .card-arrow { background: var(--accent); border-color: var(--accent); color: #0a1628; }
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); }
-  .tag { font-size: 11px; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.06); color: var(--text-muted); border: 1px solid rgba(255,255,255,0.08); }
-  [data-theme="light"] .tag { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.1); }
-
-  .footer { text-align: center; margin-top: 52px; animation: fadeUp 0.6s 0.7s ease both; }
-  .footer-text { font-size: 12px; color: var(--footer-text); }
-  .footer-brand { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--footer-brand); margin-top: 8px; }
-  .footer-brand span { color: var(--accent); }
-
-  @keyframes fadeDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
 </style>
 </head>
 <body>
 <div class="bg"></div>
 <div class="grid-lines"></div>
 
-<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙 Modo escuro</button>
+<div class="top-controls">
+  <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+  <button class="ctrl-btn" onclick="toggleLang()" id="langBtn">EN</button>
+</div>
 
 <div class="wrapper">
   <div class="header">
-    <div class="badge"><div class="badge-dot"></div>PUC-Rio · Guia do Estudante</div>
+    <div class="badge"><div class="badge-dot"></div><span data-pt="PUC-Rio · Guia do Estudante" data-en="PUC-Rio · Student Guide">PUC-Rio · Guia do Estudante</span></div>
     <h1>PUC<br><span>Conecta</span></h1>
-    <p class="subtitle">Tudo que você precisa saber sobre a PUC — num só lugar.</p>
+    <p class="subtitle" data-pt="Tudo que você precisa saber sobre a PUC — num só lugar." data-en="Everything you need to know about PUC — in one place.">Tudo que você precisa saber sobre a PUC — num só lugar.</p>
     <div class="divider"></div>
   </div>
+
   <div class="cards">
 
     <a class="card" href="conheca-a-puc.html">
       <div class="card-top">
         <div class="card-icon icon-1">🏛️</div>
         <div class="card-text">
-          <div class="card-label">Começo de tudo</div>
-          <div class="card-title">Conheça a PUC</div>
-          <div class="card-desc">Muito além da sala de aula: explore tudo o que a PUC oferece.</div>
+          <div class="card-label" data-pt="Começo de tudo" data-en="The beginning">Começo de tudo</div>
+          <div class="card-title" data-pt="Conheça a PUC" data-en="Discover PUC">Conheça a PUC</div>
+          <div class="card-desc" data-pt="Muito além da sala de aula: explore tudo o que a PUC oferece." data-en="Much more than the classroom: explore everything PUC has to offer.">Muito além da sala de aula: explore tudo o que a PUC oferece.</div>
         </div>
         <div class="card-arrow">→</div>
       </div>
       <div class="tags">
-        <span class="tag">Sobre a PUC</span>
-        <span class="tag">Manual do Calouro</span>
-        <span class="tag">Mapa do Campus</span>
-        <span class="tag">Grade Curricular</span>
+        <span class="tag" data-pt="Sobre a PUC" data-en="About PUC">Sobre a PUC</span>
+        <span class="tag" data-pt="Manual do Calouro" data-en="Freshman Guide">Manual do Calouro</span>
+        <span class="tag" data-pt="Mapa do Campus" data-en="Campus Map">Mapa do Campus</span>
+        <span class="tag" data-pt="Grade Curricular" data-en="Course Schedule">Grade Curricular</span>
       </div>
     </a>
 
-    <a class="card" href="servicos.html">
+    <a class="card" href="serviços.html">
       <div class="card-top">
         <div class="card-icon icon-2">🛠️</div>
         <div class="card-text">
-          <div class="card-label">Facilita sua vida</div>
-          <div class="card-title">Serviços & Suporte</div>
-          <div class="card-desc">Office grátis, impressão, bolsa — recursos que você provavelmente não sabia que existiam.</div>
+          <div class="card-label" data-pt="Facilita sua vida" data-en="Makes life easier">Facilita sua vida</div>
+          <div class="card-title" data-pt="Serviços & Suporte" data-en="Services & Support">Serviços & Suporte</div>
+          <div class="card-desc" data-pt="Office grátis, impressão, bolsa — recursos que você provavelmente não sabia que existiam." data-en="Free Office, printing, scholarships — resources you probably didn't know existed.">Office grátis, impressão, bolsa — recursos que você provavelmente não sabia que existiam.</div>
         </div>
         <div class="card-arrow">→</div>
       </div>
       <div class="tags">
-        <span class="tag">Atendimento PUC</span>
-        <span class="tag">Horas Complementares</span>
-        <span class="tag">Impressão Grátis</span>
-        <span class="tag">Bolsa Mensalidade</span>
-        <span class="tag">💬 Chat de Perguntas</span>
+        <span class="tag" data-pt="Atendimento PUC" data-en="PUC Support">Atendimento PUC</span>
+        <span class="tag" data-pt="Horas Complementares" data-en="Extra Credits">Horas Complementares</span>
+        <span class="tag" data-pt="Impressão Grátis" data-en="Free Printing">Impressão Grátis</span>
+        <span class="tag" data-pt="Bolsa Mensalidade" data-en="Scholarship">Bolsa Mensalidade</span>
+        <span class="tag" data-pt="💬 Chat de Perguntas" data-en="💬 Q&A Chat">💬 Chat de Perguntas</span>
       </div>
     </a>
 
@@ -146,17 +118,17 @@
       <div class="card-top">
         <div class="card-icon icon-3">☕</div>
         <div class="card-text">
-          <div class="card-label">Sobrevivência diária</div>
-          <div class="card-title">Vida no Campus</div>
-          <div class="card-desc">Onde comer, estudar e recuperar o fôlego entre as aulas.</div>
+          <div class="card-label" data-pt="Sobrevivência diária" data-en="Daily survival">Sobrevivência diária</div>
+          <div class="card-title" data-pt="Vida no Campus" data-en="Campus Life">Vida no Campus</div>
+          <div class="card-desc" data-pt="Onde comer, estudar e recuperar o fôlego entre as aulas." data-en="Where to eat, study and catch your breath between classes.">Onde comer, estudar e recuperar o fôlego entre as aulas.</div>
         </div>
         <div class="card-arrow">→</div>
       </div>
       <div class="tags">
-        <span class="tag">Cardápio</span>
-        <span class="tag">Onde Estudar?</span>
-        <span class="tag">Onde Descansar</span>
-        <span class="tag">Mapa Completo</span>
+        <span class="tag" data-pt="Cardápio" data-en="Menu">Cardápio</span>
+        <span class="tag" data-pt="Onde Estudar?" data-en="Where to Study?">Onde Estudar?</span>
+        <span class="tag" data-pt="Onde Descansar" data-en="Where to Rest">Onde Descansar</span>
+        <span class="tag" data-pt="Mapa Completo" data-en="Full Map">Mapa Completo</span>
       </div>
     </a>
 
@@ -164,25 +136,25 @@
       <div class="card-top">
         <div class="card-icon icon-4">📅</div>
         <div class="card-text">
-          <div class="card-label">Fique por dentro</div>
-          <div class="card-title">Acontecendo na PUC</div>
-          <div class="card-desc">Eventos da semana, notícias e o que está rolando no campus agora.</div>
+          <div class="card-label" data-pt="Fique por dentro" data-en="Stay in the loop">Fique por dentro</div>
+          <div class="card-title" data-pt="Acontecendo na PUC" data-en="Happening at PUC">Acontecendo na PUC</div>
+          <div class="card-desc" data-pt="Eventos da semana, notícias e o que está rolando no campus agora." data-en="Weekly events, news and what's happening on campus right now.">Eventos da semana, notícias e o que está rolando no campus agora.</div>
         </div>
         <div class="card-arrow">→</div>
       </div>
       <div class="tags">
-        <span class="tag">Próximos Eventos</span>
-        <span class="tag">Notícias PUC</span>
+        <span class="tag" data-pt="Próximos Eventos" data-en="Upcoming Events">Próximos Eventos</span>
+        <span class="tag" data-pt="Notícias PUC" data-en="PUC News">Notícias PUC</span>
       </div>
     </a>
 
     <a class="card" href="inscricoes.html">
       <div class="card-top">
-        <div class="card-icon icon-5" style="background:rgba(255,80,80,0.15)">⏳</div>
+        <div class="card-icon icon-6">⏳</div>
         <div class="card-text">
-          <div class="card-label">Corre que fecha!</div>
-          <div class="card-title">Inscrições a Expirar</div>
-          <div class="card-desc">Processos seletivos, programas e oportunidades com prazo — não deixa passar.</div>
+          <div class="card-label" data-pt="Corre que fecha!" data-en="Hurry, closing soon!">Corre que fecha!</div>
+          <div class="card-title" data-pt="Inscrições a Expirar" data-en="Expiring Registrations">Inscrições a Expirar</div>
+          <div class="card-desc" data-pt="Processos seletivos, programas e oportunidades com prazo — não deixa passar." data-en="Selection processes, programs and opportunities with deadlines — don't miss out.">Processos seletivos, programas e oportunidades com prazo — não deixa passar.</div>
         </div>
         <div class="card-arrow">→</div>
       </div>
@@ -192,48 +164,55 @@
       <div class="card-top">
         <div class="card-icon icon-5">🚀</div>
         <div class="card-text">
-          <div class="card-label">Vai além da sala de aula</div>
-          <div class="card-title">Oportunidades & Extensão</div>
-          <div class="card-desc">Quer colocar algo diferente no currículo? Aqui começa a sua trajetória.</div>
+          <div class="card-label" data-pt="Vai além da sala de aula" data-en="Beyond the classroom">Vai além da sala de aula</div>
+          <div class="card-title" data-pt="Oportunidades & Extensão" data-en="Opportunities & Extension">Oportunidades & Extensão</div>
+          <div class="card-desc" data-pt="Quer colocar algo diferente no currículo? Aqui começa a sua trajetória." data-en="Want something different on your resume? Your journey starts here.">Quer colocar algo diferente no currículo? Aqui começa a sua trajetória.</div>
         </div>
         <div class="card-arrow">→</div>
       </div>
       <div class="tags">
         <span class="tag">ECOA</span>
         <span class="tag">Gênesis</span>
-        <span class="tag">Empresa Júnior</span>
+        <span class="tag" data-pt="Empresa Júnior" data-en="Junior Enterprise">Empresa Júnior</span>
         <span class="tag">Consulting Club</span>
-        <span class="tag">Liga de Mercado Financeiro</span>
-        <span class="tag">e muito mais ✨</span>
+        <span class="tag" data-pt="Liga de Mercado Financeiro" data-en="Finance League">Liga de Mercado Financeiro</span>
+        <span class="tag" data-pt="e muito mais ✨" data-en="and much more ✨">e muito mais ✨</span>
       </div>
     </a>
 
   </div>
+
   <div class="footer">
-    <p class="footer-text">Feito com 💙 por alunos, para alunos</p>
+    <p class="footer-text" data-pt="Feito com 💙 por alunos, para alunos" data-en="Made with 💙 by students, for students">Feito com 💙 por alunos, para alunos</p>
     <p class="footer-brand">PUC <span>Conecta</span> · 2026</p>
   </div>
 </div>
 
 <script>
-  function toggleTheme() {
-    const html = document.documentElement;
-    const btn = document.getElementById('themeBtn');
-    if (html.getAttribute('data-theme') === 'light') {
-      html.removeAttribute('data-theme');
-      btn.textContent = '🌙 Modo escuro';
-      localStorage.setItem('puc-theme', 'dark');
-    } else {
-      html.setAttribute('data-theme', 'light');
-      btn.textContent = '☀️ Modo claro';
-      localStorage.setItem('puc-theme', 'light');
-    }
+  // THEME
+  function toggleTheme(){const h=document.documentElement,b=document.getElementById('themeBtn');if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');b.textContent='🌙';localStorage.setItem('puc-theme','dark')}else{h.setAttribute('data-theme','light');b.textContent='☀️';localStorage.setItem('puc-theme','light')}}
+  const savedTheme=localStorage.getItem('puc-theme');if(savedTheme==='light'){document.documentElement.setAttribute('data-theme','light');document.getElementById('themeBtn').textContent='☀️'}
+
+  // LANGUAGE
+  let currentLang = localStorage.getItem('puc-lang') || 'pt';
+
+  function applyLang(lang){
+    document.querySelectorAll('[data-pt]').forEach(el=>{
+      el.textContent = lang==='en' ? el.getAttribute('data-en') : el.getAttribute('data-pt');
+    });
+    const btn = document.getElementById('langBtn');
+    btn.textContent = lang==='en' ? 'PT' : 'EN';
+    btn.classList.toggle('active-lang', lang==='en');
+    document.documentElement.lang = lang==='en' ? 'en' : 'pt-BR';
+    localStorage.setItem('puc-lang', lang);
+    currentLang = lang;
   }
-  const saved = localStorage.getItem('puc-theme');
-  if (saved === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.getElementById('themeBtn').textContent = '☀️ Modo claro';
+
+  function toggleLang(){
+    applyLang(currentLang==='pt' ? 'en' : 'pt');
   }
+
+  applyLang(currentLang);
 </script>
 </body>
 </html>
