@@ -218,5 +218,20 @@ function sendMsg(){
 document.getElementById('chatInput').addEventListener('keydown',function(e){if(e.key==='Enter')sendMsg();});
 function toggleTheme(){const h=document.documentElement,b=document.getElementById('themeBtn');if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');b.textContent='🌙 Modo escuro';localStorage.setItem('puc-theme','dark')}else{h.setAttribute('data-theme','light');b.textContent='☀️ Modo claro';localStorage.setItem('puc-theme','light')}}
 const saved=localStorage.getItem('puc-theme');if(saved==='light'){document.documentElement.setAttribute('data-theme','light');document.getElementById('themeBtn').textContent='☀️ Modo claro'}
+
+var currentLang=localStorage.getItem("puc-lang")||"pt";
+function applyLang(lang){
+  document.querySelectorAll("[data-pt]").forEach(function(el){
+    var pt=el.getAttribute("data-pt"),en=el.getAttribute("data-en");
+    if(el.innerHTML&&el.innerHTML.indexOf("<")>-1){el.innerHTML=lang==="en"?en:pt;}
+    else{el.textContent=lang==="en"?en:pt;}
+  });
+  var btn=document.getElementById("langBtn");
+  if(btn){btn.textContent=lang==="en"?"PT":"EN";btn.classList.toggle("active-lang",lang==="en");}
+  document.documentElement.lang=lang==="en"?"en":"pt-BR";
+  localStorage.setItem("puc-lang",lang);currentLang=lang;
+}
+function toggleLang(){applyLang(currentLang==="pt"?"en":"pt");}
+applyLang(currentLang);
 </script>
 </body></html>
