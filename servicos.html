@@ -65,6 +65,11 @@
   .ctrl-btn{background:var(--card-bg);border:1px solid var(--card-border);border-radius:100px;padding:6px 14px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text-main);cursor:pointer;backdrop-filter:blur(12px);transition:all .2s}
   .ctrl-btn:hover{border-color:var(--accent);color:var(--accent)}
   .ctrl-btn.active-lang{background:rgba(0,194,255,.15);border-color:var(--accent);color:var(--accent)}
+
+  .course-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;animation:fadeUp .5s .1s ease both}
+  .ctab{padding:7px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.12);background:transparent;color:var(--text-muted);font-size:11px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}
+  .ctab.active{background:rgba(0,194,255,.15);border-color:var(--accent);color:var(--text-main)}
+  .tab-panel{display:none}.tab-panel.active{display:block}
   @keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 </style>
@@ -84,16 +89,23 @@
     <div class="divider"></div>
   </div>
 
-  <!-- TECNOLOGIA -->
-  <div class="section">
-    <div class="section-title" data-pt="💻 Tecnologia & Ferramentas" data-en="💻 Technology & Tools">💻 Tecnologia & Ferramentas</div>
+  <div class="course-tabs">
+    <button class="ctab active" onclick="showTab('tech',this)">💻 Tecnologia</button>
+    <button class="ctab" onclick="showTab('financeiro',this)">💰 Apoio Financeiro</button>
+    <button class="ctab" onclick="showTab('linguas',this)">🌍 Línguas & Cultura</button>
+    <button class="ctab" onclick="showTab('calendario',this)">📅 Calendário</button>
+    <button class="ctab" onclick="showTab('atendimento',this)">🏛️ Atendimento</button>
+    <button class="ctab" onclick="showTab('chat',this)">💬 Perguntas</button>
+  </div>
 
+  <!-- TECNOLOGIA -->
+  <div id="tech" class="tab-panel active">
+    <div class="section-title">💻 Tecnologia & Ferramentas</div>
     <div class="serv-card">
       <div class="serv-head"><div class="serv-icon">📦</div><div><div class="serv-title">Office 365 Grátis</div><div class="serv-sub">Word, Excel, PowerPoint, Teams e mais</div></div></div>
       <div class="serv-desc">Todo aluno da PUC-Rio tem acesso gratuito ao pacote Microsoft Office 365 completo. Basta usar o e-mail institucional <strong>@aluno.puc-rio.br</strong> para ativar.</div>
       <a class="serv-link sl-blue" href="https://www.microsoft.com/pt-br/education/products/office" target="_blank">🔗 Ativar Office ↗</a>
     </div>
-
     <div class="serv-card">
       <div class="serv-head"><div class="serv-icon">🖨️</div><div><div class="serv-title">Impressão Grátis</div><div class="serv-sub">Labs do RDC — Rio DataCentro</div></div></div>
       <div class="serv-desc">Os laboratórios de informática do RDC oferecem impressão gratuita para alunos em horário comercial. Ideal para trabalhos, artigos e documentos acadêmicos.</div>
@@ -101,15 +113,13 @@
   </div>
 
   <!-- FINANCEIRO -->
-  <div class="section">
-    <div class="section-title" data-pt="💰 Apoio Financeiro" data-en="💰 Financial Support">💰 Apoio Financeiro</div>
-
+  <div id="financeiro" class="tab-panel">
+    <div class="section-title">💰 Apoio Financeiro</div>
     <div class="serv-card">
       <div class="serv-head"><div class="serv-icon">🎓</div><div><div class="serv-title">Bolsa Mensalidade</div><div class="serv-sub">Desconto e auxílio nas mensalidades</div></div></div>
       <div class="serv-desc">A PUC oferece programas de bolsa e desconto na mensalidade com base em critérios socioeconômicos. Procure a DAE (Divisão de Assuntos Estudantis) para saber mais.</div>
       <a class="serv-link sl-gold" href="https://www.puc-rio.br/ensinopesq/ccg/bolsas.html" target="_blank">🔗 Saiba mais ↗</a>
     </div>
-
     <div class="serv-card">
       <div class="serv-head"><div class="serv-icon">🏦</div><div><div class="serv-title">FIES & ProUni</div><div class="serv-sub">Financiamento estudantil federal</div></div></div>
       <div class="serv-desc">A PUC-Rio participa do FIES e do ProUni. Para informações sobre elegibilidade e processo de inscrição, consulte a Secretaria Acadêmica ou o site do MEC.</div>
@@ -118,17 +128,13 @@
   </div>
 
   <!-- LÍNGUAS -->
-  <div class="section">
-    <div class="section-title" data-pt="🌍 Línguas & Cultura" data-en="🌍 Languages & Culture">🌍 Línguas & Cultura</div>
-
-    <div class="highlight-box"><strong>🤝 Para intercambistas e curiosos</strong> — A PUC tem grupos de monitoria de línguas abertos para toda a comunidade universitária. Ótimo tanto para aprender português quanto para praticar outros idiomas.</div>
-
+  <div id="linguas" class="tab-panel">
+    <div class="section-title">🌍 Línguas & Cultura</div>
+    <div class="highlight-box"><strong>🤝 Para intercambistas e curiosos</strong> — A PUC tem grupos de monitoria de línguas abertos para toda a comunidade universitária.</div>
     <div class="serv-card">
       <div class="serv-head"><div class="serv-icon">🇧🇷</div><div><div class="serv-title">Monitoria de Português</div><div class="serv-sub">Para intercambistas e estrangeiros</div></div></div>
-      <div class="serv-desc">Grupo de monitoria voltado para intercambistas e alunos internacionais que querem aprender português e entender a cultura brasileira. Aulas informais, conversação e integração com alunos locais.</div>
-      <div class="serv-desc">Procure o Departamento de Letras ou a coordenação do seu curso para informações sobre horários e inscrição.</div>
+      <div class="serv-desc">Grupo de monitoria voltado para intercambistas e alunos internacionais que querem aprender português e entender a cultura brasileira. Aulas informais, conversação e integração com alunos locais. Procure o Departamento de Letras ou a coordenação do seu curso para informações sobre horários e inscrição.</div>
     </div>
-
     <div class="serv-card">
       <div class="serv-head"><div class="serv-icon">🌐</div><div><div class="serv-title">Intercâmbio</div><div class="serv-sub">Estudar fora com apoio da PUC</div></div></div>
       <div class="serv-desc">A PUC-Rio tem convênios com universidades em mais de 40 países. A coordenação de intercâmbio orienta sobre processos, bolsas e equivalência de disciplinas.</div>
@@ -137,9 +143,8 @@
   </div>
 
   <!-- CALENDÁRIO -->
-  <div class="section">
-    <div class="section-title" data-pt="📅 Calendário Acadêmico" data-en="📅 Academic Calendar">📅 Calendário Acadêmico</div>
-
+  <div id="calendario" class="tab-panel">
+    <div class="section-title">📅 Calendário Acadêmico</div>
     <div class="serv-card">
       <div class="serv-head"><div class="serv-icon">📅</div><div><div class="serv-title">Calendário Escolar PUC-Rio</div><div class="serv-sub">Datas, prazos e períodos letivos</div></div></div>
       <div class="serv-desc">Consulte o calendário oficial da PUC-Rio com datas de matrícula, início e fim das aulas, feriados, provas finais, trancamento e todos os prazos importantes do semestre.</div>
@@ -148,20 +153,17 @@
   </div>
 
   <!-- ATENDIMENTO -->
-  <div class="section">
-    <div class="section-title" data-pt="🏛️ Atendimento & Suporte" data-en="🏛️ Assistance & Support">🏛️ Atendimento & Suporte</div>
-
+  <div id="atendimento" class="tab-panel">
+    <div class="section-title">🏛️ Atendimento & Suporte</div>
     <div class="serv-card">
       <div class="serv-head"><div class="serv-icon">🎓</div><div><div class="serv-title">DAR — Divisão de Atendimento ao Aluno</div><div class="serv-sub">Matrícula, documentos, histórico</div></div></div>
       <div class="serv-desc">O DAR é o setor responsável por matrícula, emissão de histórico, declarações, trancamento de disciplinas e outros serviços acadêmicos essenciais.</div>
       <a class="serv-link sl-blue" href="https://www.puc-rio.br/sobrepuc/depto/dar/" target="_blank">🔗 Portal DAR ↗</a>
     </div>
-
     <div class="serv-card">
       <div class="serv-head"><div class="serv-icon">😌</div><div><div class="serv-title">NAI — Apoio Psicológico</div><div class="serv-sub">Saúde mental e bem-estar</div></div></div>
       <div class="serv-desc">O Núcleo de Apoio ao Indivíduo oferece atendimento psicológico gratuito, orientação e escuta para estudantes. Fica no Cardeal Leme.</div>
     </div>
-
     <div class="serv-card">
       <div class="serv-head"><div class="serv-icon">⏱️</div><div><div class="serv-title">Horas Complementares</div><div class="serv-sub">Como cumprir e registrar</div></div></div>
       <div class="serv-desc">Participação em eventos, ligas, empresa júnior, monitorias e extensão conta como horas complementares. Consulte o regulamento do seu curso para saber quantas horas são necessárias e como registrar.</div>
@@ -169,40 +171,28 @@
     </div>
   </div>
 
-  <!-- CHAT DE PERGUNTAS -->
-  <div class="section">
-    <div class="section-title" data-pt="💬 Perguntas sem vergonha" data-en="💬 No-shame questions">💬 Perguntas sem vergonha</div>
+  <!-- CHAT -->
+  <div id="chat" class="tab-panel">
+    <div class="section-title">💬 Perguntas sem vergonha</div>
     <div class="highlight-box"><strong>🙋 Pode perguntar qualquer coisa!</strong> — Aqui é o espaço para as dúvidas bobas que você tem vergonha de fazer. Qualquer aluno pode responder. Anônimo e sem julgamento.</div>
-
     <div class="chat-box">
       <div class="chat-messages" id="chatMessages">
-        <div class="chat-msg anon">
-          <span class="chat-label">Anônimo</span>
-          <div class="bubble">Como pego o ônibus da PUC até o metrô? 🚌</div>
-        </div>
-        <div class="chat-msg resp">
-          <span class="chat-label">Aluno 🎓</span>
-          <div class="bubble">O 584 passa na porta da PUC e vai até o Leblon. Para o metrô mais perto, desce no Jardim de Alah e pega o metrô na Gal. Osório!</div>
-        </div>
-        <div class="chat-msg anon">
-          <span class="chat-label">Anônimo</span>
-          <div class="bubble">Onde imprimo meu contrato de estágio? É grátis no RDC mesmo?</div>
-        </div>
-        <div class="chat-msg resp">
-          <span class="chat-label">Aluno 🎓</span>
-          <div class="bubble">Sim! Vai no lab do RDC com seu e-mail @aluno.puc-rio.br, imprime lá. É gratuito para alunos 🖨️</div>
-        </div>
+        <div class="chat-msg anon"><span class="chat-label">Anônimo</span><div class="bubble">Como pego o ônibus da PUC até o metrô? 🚌</div></div>
+        <div class="chat-msg resp"><span class="chat-label">Aluno 🎓</span><div class="bubble">O 584 passa na porta da PUC e vai até o Leblon. Para o metrô mais perto, desce no Jardim de Alah e pega o metrô na Gal. Osório!</div></div>
+        <div class="chat-msg anon"><span class="chat-label">Anônimo</span><div class="bubble">Onde imprimo meu contrato de estágio? É grátis no RDC mesmo?</div></div>
+        <div class="chat-msg resp"><span class="chat-label">Aluno 🎓</span><div class="bubble">Sim! Vai no lab do RDC com seu e-mail @aluno.puc-rio.br, imprime lá. É gratuito para alunos 🖨️</div></div>
       </div>
       <div class="chat-input-row">
         <input class="chat-input" id="chatInput" type="text" placeholder="Manda sua dúvida aqui (anônimo)..." maxlength="200">
         <button class="chat-send" onclick="sendMsg()">Enviar</button>
       </div>
     </div>
-    <div class="tip-box"><strong>💡 Nota:</strong> As perguntas e respostas ficam salvas só enquanto a página estiver aberta. Para um canal permanente, considere um grupo no WhatsApp ou Discord do seu curso.</div>
+    <div class="tip-box"><strong>💡 Nota:</strong> As perguntas ficam salvas só enquanto a página estiver aberta.</div>
   </div>
 
 </div>
 <script>
+function showTab(id,btn){document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("active"));document.querySelectorAll(".ctab").forEach(t=>t.classList.remove("active"));document.getElementById(id).classList.add("active");btn.classList.add("active");}
 function sendMsg(){
   const input=document.getElementById('chatInput');
   const msgs=document.getElementById('chatMessages');
