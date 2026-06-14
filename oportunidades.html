@@ -78,6 +78,7 @@
   .ctrl-btn{background:var(--card-bg);border:1px solid var(--card-border);border-radius:100px;padding:6px 14px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--text-main);cursor:pointer;backdrop-filter:blur(12px);transition:all .2s}
   .ctrl-btn:hover{border-color:var(--accent);color:var(--accent)}
   .ctrl-btn.active-lang{background:rgba(0,194,255,.15);border-color:var(--accent);color:var(--accent)}
+  .psi-panel{display:none}.psi-panel.active{display:block}
   @keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 </style>
@@ -289,7 +290,16 @@
 
   <!-- PSICOLOGIA & NEUROCIÊNCIA -->
   <div id="psi" class="course-panel">
-    <div class="section-label">Ligas Acadêmicas · Psicologia &amp; Neurociência</div>
+    <div class="section-label">Psicologia &amp; Neurociência</div>
+
+    <!-- Sub-abas -->
+    <div class="course-tabs" style="margin-bottom:16px">
+      <button class="ctab active" onclick="showPsiTab('ligas',this)">🏷️ Ligas</button>
+      <button class="ctab" onclick="showPsiTab('ic',this)">🔬 Iniciações Científicas</button>
+    </div>
+
+    <!-- LIGAS -->
+    <div id="psi-ligas" class="psi-panel active">
     <div class="highlight-box"><strong>🧠 Psicologia & Neurociência na PUC</strong> — O curso tem uma das maiores redes de ligas acadêmicas da universidade. Cada liga foca em uma área clínica ou de pesquisa específica.</div>
 
     <div class="liga-card">
@@ -349,8 +359,10 @@
     </div>
 
     <div class="tip-box"><strong>💡 Dica:</strong> Não sabe por qual liga começar? Fale com alunos mais adiantados do curso — eles costumam ter uma visão real de quais ligas são mais ativas no semestre atual.</div>
+    </div><!-- fim psi-ligas -->
 
-    <div class="section-label" style="margin-top:20px">🔬 Iniciação Científica — Professores disponíveis</div>
+    <!-- IC -->
+    <div id="psi-ic" class="psi-panel">
     <div class="highlight-box"><strong>📋 Como funciona</strong> — A IC (Iniciação Científica) é uma oportunidade de pesquisa supervisionada por um professor. Pode ser remunerada (PIBIC/CNPq ou FAPERJ) ou voluntária. Dura em geral 1 ano renovável. Entre em contato diretamente com o professor pelo e-mail abaixo.</div>
 
     <div class="liga-card">
@@ -410,6 +422,8 @@
       <div class="liga-desc">O Serviço de Psicologia Aplicada é o serviço-escola do curso de Psicologia da PUC-Rio. Alunos de semestres avançados realizam atendimentos clínicos supervisionados por professores. O SPA oferece atendimento psicológico à comunidade e é também o principal espaço de prática clínica dos alunos do curso. As equipes variam por linha teórica e público atendido — entre em contato com o departamento para saber quais equipes estão ativas no semestre.</div>
       <span class="liga-tag">Prática clínica</span><span class="liga-tag">Supervisionado</span><span class="liga-tag">Comunidade</span>
     </div>
+    </div><!-- fim psi-ic -->
+  </div><!-- fim course-panel psi -->
   </div>
 
   <!-- COMUNICAÇÃO -->
@@ -536,7 +550,23 @@
 
 <script>
 function showCourse(id,btn){document.querySelectorAll('.course-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
+function showPsiTab(id,btn){document.querySelectorAll('.psi-panel').forEach(p=>p.classList.remove('active'));btn.closest('.course-tabs').querySelectorAll('.ctab').forEach(t=>t.classList.remove('active'));document.getElementById('psi-'+id).classList.add('active');btn.classList.add('active');}
 function toggleTheme(){const h=document.documentElement,b=document.getElementById('themeBtn');if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');b.textContent='🌙 Modo escuro';localStorage.setItem('puc-theme','dark')}else{h.setAttribute('data-theme','light');b.textContent='☀️ Modo claro';localStorage.setItem('puc-theme','light')}}
 const saved=localStorage.getItem('puc-theme');if(saved==='light'){document.documentElement.setAttribute('data-theme','light');document.getElementById('themeBtn').textContent='☀️ Modo claro'}
+
+var currentLang=localStorage.getItem("puc-lang")||"pt";
+function applyLang(lang){
+  document.querySelectorAll("[data-pt]").forEach(function(el){
+    var pt=el.getAttribute("data-pt"),en=el.getAttribute("data-en");
+    if(el.innerHTML&&el.innerHTML.indexOf("<")>-1){el.innerHTML=lang==="en"?en:pt;}
+    else{el.textContent=lang==="en"?en:pt;}
+  });
+  var btn=document.getElementById("langBtn");
+  if(btn){btn.textContent=lang==="en"?"PT":"EN";btn.classList.toggle("active-lang",lang==="en");}
+  document.documentElement.lang=lang==="en"?"en":"pt-BR";
+  localStorage.setItem("puc-lang",lang);currentLang=lang;
+}
+function toggleLang(){applyLang(currentLang==="pt"?"en":"pt");}
+applyLang(currentLang);
 </script>
 </body></html>
