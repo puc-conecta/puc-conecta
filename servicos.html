@@ -90,24 +90,24 @@
   </div>
 
   <div class="course-tabs">
-    <button class="ctab active" onclick="showTab('tech',this)">💻 Tecnologia</button>
-    <button class="ctab" onclick="showTab('financeiro',this)">💰 Apoio Financeiro</button>
-    <button class="ctab" onclick="showTab('linguas',this)">🌍 Línguas & Cultura</button>
-    <button class="ctab" onclick="showTab('calendario',this)">📅 Calendário</button>
-    <button class="ctab" onclick="showTab('atendimento',this)">🏛️ Atendimento</button>
-    <button class="ctab" onclick="showTab('chat',this)">💬 Perguntas</button>
+    <button class="ctab active" onclick="showTab('tech',this)" data-pt="💻 Tecnologia" data-en="💻 Technology">💻 Tecnologia</button>
+    <button class="ctab" onclick="showTab('financeiro',this)" data-pt="💰 Apoio Financeiro" data-en="💰 Financial Support">💰 Apoio Financeiro</button>
+    <button class="ctab" onclick="showTab('linguas',this)" data-pt="🌍 Línguas & Cultura" data-en="🌍 Languages & Culture">🌍 Línguas & Cultura</button>
+    <button class="ctab" onclick="showTab('calendario',this)" data-pt="📅 Calendário" data-en="📅 Calendar">📅 Calendário</button>
+    <button class="ctab" onclick="showTab('atendimento',this)" data-pt="🏛️ Atendimento" data-en="🏛️ Support">🏛️ Atendimento</button>
+    <button class="ctab" onclick="showTab('chat',this)" data-pt="💬 Perguntas" data-en="💬 Q&A">💬 Perguntas</button>
   </div>
 
   <!-- TECNOLOGIA -->
   <div id="tech" class="tab-panel active">
     <div class="section-title">💻 Tecnologia & Ferramentas</div>
     <div class="serv-card">
-      <div class="serv-head"><div class="serv-icon">📦</div><div><div class="serv-title">Office 365 Grátis</div><div class="serv-sub">Word, Excel, PowerPoint, Teams e mais</div></div></div>
+      <div class="serv-head"><div class="serv-icon">📦</div><div><div class="serv-title" data-pt="Office 365 Grátis" data-en="Free Office 365">Office 365 Grátis</div><div class="serv-sub">Word, Excel, PowerPoint, Teams e mais</div></div></div>
       <div class="serv-desc">Todo aluno da PUC-Rio tem acesso gratuito ao pacote Microsoft Office 365 completo. Basta usar o e-mail institucional <strong>@aluno.puc-rio.br</strong> para ativar.</div>
       <a class="serv-link sl-blue" href="https://www.microsoft.com/pt-br/education/products/office" target="_blank">🔗 Ativar Office ↗</a>
     </div>
     <div class="serv-card">
-      <div class="serv-head"><div class="serv-icon">🖨️</div><div><div class="serv-title">Impressão Grátis</div><div class="serv-sub">Labs do RDC — Rio DataCentro</div></div></div>
+      <div class="serv-head"><div class="serv-icon">🖨️</div><div><div class="serv-title" data-pt="Impressão Grátis" data-en="Free Printing">Impressão Grátis</div><div class="serv-sub">Labs do RDC — Rio DataCentro</div></div></div>
       <div class="serv-desc">Os laboratórios de informática do RDC oferecem impressão gratuita para alunos em horário comercial. Ideal para trabalhos, artigos e documentos acadêmicos.</div>
     </div>
   </div>
@@ -116,14 +116,14 @@
   <div id="financeiro" class="tab-panel">
     <div class="section-title">💰 Apoio Financeiro</div>
     <div class="serv-card">
-      <div class="serv-head"><div class="serv-icon">🎓</div><div><div class="serv-title">Bolsa Mensalidade</div><div class="serv-sub">Desconto e auxílio nas mensalidades</div></div></div>
+      <div class="serv-head"><div class="serv-icon">🎓</div><div><div class="serv-title" data-pt="Bolsa Mensalidade" data-en="Tuition Scholarship">Bolsa Mensalidade</div><div class="serv-sub">Desconto e auxílio nas mensalidades</div></div></div>
       <div class="serv-desc">A PUC oferece programas de bolsa e desconto na mensalidade com base em critérios socioeconômicos. Procure a DAE (Divisão de Assuntos Estudantis) para saber mais.</div>
       <a class="serv-link sl-gold" href="https://www.puc-rio.br/ensinopesq/ccg/bolsas.html" target="_blank">🔗 Saiba mais ↗</a>
     </div>
     <div class="serv-card">
       <div class="serv-head"><div class="serv-icon">🏦</div><div><div class="serv-title">FIES & ProUni</div><div class="serv-sub">Financiamento estudantil federal</div></div></div>
-      <div class="serv-desc">A PUC-Rio participa do FIES e do ProUni. Para informações sobre elegibilidade e processo de inscrição, consulte a Secretaria Acadêmica ou o site do MEC.</div>
-      <a class="serv-link sl-gold" href="https://www.puc-rio.br" target="_blank">🔗 Secretaria ↗</a>
+      <div class="serv-desc">A PUC-Rio participa do FIES e do ProUni. Para informações sobre elegibilidade e processo de inscrição, consulte a página oficial de bolsas e financiamentos da PUC-Rio.</div>
+      <a class="serv-link sl-gold" href="https://www.puc-rio.br/ensinopesq/ccg/prouni/" target="_blank">🔗 ProUni PUC-Rio ↗</a>
     </div>
   </div>
 
@@ -132,13 +132,13 @@
     <div class="section-title">🌍 Línguas & Cultura</div>
     <div class="highlight-box"><strong>🤝 Para intercambistas e curiosos</strong> — A PUC tem grupos de monitoria de línguas abertos para toda a comunidade universitária.</div>
     <div class="serv-card">
-      <div class="serv-head"><div class="serv-icon">🇧🇷</div><div><div class="serv-title">Monitoria de Português</div><div class="serv-sub">Para intercambistas e estrangeiros</div></div></div>
+      <div class="serv-head"><div class="serv-icon">🇧🇷</div><div><div class="serv-title" data-pt="Monitoria de Português" data-en="Portuguese Tutoring">Monitoria de Português</div><div class="serv-sub">Para intercambistas e estrangeiros</div></div></div>
       <div class="serv-desc">Grupo de monitoria voltado para intercambistas e alunos internacionais que querem aprender português e entender a cultura brasileira. Aulas informais, conversação e integração com alunos locais. Procure o Departamento de Letras ou a coordenação do seu curso para informações sobre horários e inscrição.</div>
     </div>
     <div class="serv-card">
-      <div class="serv-head"><div class="serv-icon">🌐</div><div><div class="serv-title">Intercâmbio</div><div class="serv-sub">Estudar fora com apoio da PUC</div></div></div>
+      <div class="serv-head"><div class="serv-icon">🌐</div><div><div class="serv-title" data-pt="Intercâmbio" data-en="Exchange Program">Intercâmbio</div><div class="serv-sub">Estudar fora com apoio da PUC</div></div></div>
       <div class="serv-desc">A PUC-Rio tem convênios com universidades em mais de 40 países. A coordenação de intercâmbio orienta sobre processos, bolsas e equivalência de disciplinas.</div>
-      <a class="serv-link sl-blue" href="https://www.puc-rio.br/ensinopesq/cri/" target="_blank">🔗 CRI — Relações Internacionais ↗</a>
+      <a class="serv-link sl-blue" href="https://www.puc-rio.br/ensinopesq/ccg/intercambio/" target="_blank">🔗 Intercâmbio Internacional ↗</a>
     </div>
   </div>
 
@@ -146,7 +146,7 @@
   <div id="calendario" class="tab-panel">
     <div class="section-title">📅 Calendário Acadêmico</div>
     <div class="serv-card">
-      <div class="serv-head"><div class="serv-icon">📅</div><div><div class="serv-title">Calendário Escolar PUC-Rio</div><div class="serv-sub">Datas, prazos e períodos letivos</div></div></div>
+      <div class="serv-head"><div class="serv-icon">📅</div><div><div class="serv-title" data-pt="Calendário Escolar PUC-Rio" data-en="PUC-Rio Academic Calendar">Calendário Escolar PUC-Rio</div><div class="serv-sub">Datas, prazos e períodos letivos</div></div></div>
       <div class="serv-desc">Consulte o calendário oficial da PUC-Rio com datas de matrícula, início e fim das aulas, feriados, provas finais, trancamento e todos os prazos importantes do semestre.</div>
       <a class="serv-link sl-blue" href="https://www.puc-rio.br/sobrepuc/depto/dar/calendario/" target="_blank">📅 Ver Calendário Oficial ↗</a>
     </div>
@@ -165,7 +165,7 @@
       <div class="serv-desc">O Núcleo de Apoio ao Indivíduo oferece atendimento psicológico gratuito, orientação e escuta para estudantes. Fica no Cardeal Leme.</div>
     </div>
     <div class="serv-card">
-      <div class="serv-head"><div class="serv-icon">⏱️</div><div><div class="serv-title">Horas Complementares</div><div class="serv-sub">Como cumprir e registrar</div></div></div>
+      <div class="serv-head"><div class="serv-icon">⏱️</div><div><div class="serv-title" data-pt="Horas Complementares" data-en="Extracurricular Hours">Horas Complementares</div><div class="serv-sub">Como cumprir e registrar</div></div></div>
       <div class="serv-desc">Participação em eventos, ligas, empresa júnior, monitorias e extensão conta como horas complementares. Consulte o regulamento do seu curso para saber quantas horas são necessárias e como registrar.</div>
       <a class="serv-link sl-green" href="https://www.puc-rio.br/sobrepuc/depto/dar/" target="_blank">🔗 Regulamento ↗</a>
     </div>
@@ -184,7 +184,7 @@
       </div>
       <div class="chat-input-row">
         <input class="chat-input" id="chatInput" type="text" placeholder="Manda sua dúvida aqui (anônimo)..." maxlength="200">
-        <button class="chat-send" onclick="sendMsg()">Enviar</button>
+        <button class="chat-send" onclick="sendMsg()" data-pt="Enviar" data-en="Send">Enviar</button>
       </div>
     </div>
     <div class="tip-box"><strong>💡 Nota:</strong> As perguntas ficam salvas só enquanto a página estiver aberta.</div>
