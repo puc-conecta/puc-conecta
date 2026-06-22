@@ -124,7 +124,7 @@
     <div id="qua" class="menu-day"><div class="menu-card"><div class="menu-meal">Almoço</div><div class="menu-item"><div class="menu-dot"></div><div class="menu-item-text">✏️ <em>Preencha aqui</em></div></div></div></div>
     <div id="qui" class="menu-day"><div class="menu-card"><div class="menu-meal">Almoço</div><div class="menu-item"><div class="menu-dot"></div><div class="menu-item-text">✏️ <em>Preencha aqui</em></div></div></div></div>
     <div id="sex" class="menu-day"><div class="menu-card"><div class="menu-meal">Almoço</div><div class="menu-item"><div class="menu-dot"></div><div class="menu-item-text">✏️ <em>Preencha aqui</em></div></div></div></div>
-    <div class="tip-box"><strong>💡 Como atualizar:</strong> A PUC divulga o cardápio semanalmente. Edite os itens com ✏️ quando sair.</div>
+    
   </div>
 
   <!-- ONDE COMER -->
@@ -184,10 +184,10 @@
       <div class="food-zone"><div class="food-zone-title">🚪 Lado de fora da PUC</div><div class="food-list">
         <div class="food-item"><div class="food-dot"></div>🎂 Banca — brigadeiros, brownies, palha italiana, bolos no pote, tortas, balas, refrigerantes, energéticos</div>
         <div class="food-item"><div class="food-dot"></div>🧉 Ney Mate</div>
-        <div class="food-item"><div class="food-dot"></div>🌯 Wrap</div>
+        <div class="food-item"><div class="food-dot"></div>🌯 Wrap <span style="font-size:11px;color:var(--accent)">· Peça antes: <a href="https://wa.me/5521988060202" target="_blank" style="color:var(--accent)">(21) 98806-0202</a></span></div>
         <div class="food-item"><div class="food-dot"></div>🥪 Merendas / Misto / Pão de Queijo</div>
         <div class="food-item"><div class="food-dot"></div>🌭 Cachorro Quente</div>
-        <div class="food-item"><div class="food-dot"></div>🍖 Quentinha Churras / Strogonoff</div>
+        <div class="food-item"><div class="food-dot"></div>🍖 Quentinha Churras / Strogonoff <span style="font-size:11px;color:var(--accent)">· Peça antes: <a href="https://wa.me/5521992498747" target="_blank" style="color:var(--accent)">(21) 99249-8747</a></span></div>
         <div class="food-item"><div class="food-dot"></div>🍕 Pizza e Hambúrguer</div>
         <div class="food-item"><div class="food-dot"></div>🍧 Açaí / Frango</div>
         <div class="food-item"><div class="food-dot"></div>🫔 Tapioca / Cookie</div>
@@ -214,7 +214,7 @@
     <div class="info-card"><div class="info-card-title">💻 Labs RDC</div><div class="info-card-text">Computadores abertos para alunos em horário comercial. Impressão grátis disponível.</div></div>
     <div class="info-card"><div class="info-card-title">🌳 Áreas externas — Bosque & Rio</div><div class="info-card-text">Mesas e bancos espalhados pelo campus, em especial perto do rio. Wi-Fi disponível ao ar livre.</div></div>
     <div class="info-card"><div class="info-card-title">🔌 Locais com tomada</div><div class="info-card-text">Melhores opções: Biblioteca Frings (cabines individuais), California Coffee, Labs do RDC e áreas de convivência dos centros (CTC, CTCH).</div></div>
-    <div class="info-card"><div class="info-card-title">🔥 Onde esquentar comida</div><div class="info-card-text">Micro-ondas disponíveis no Bandejão (RU) e em algumas lanchonetes. Nas casinhas, pergunte no balcão.</div></div>
+    <div class="info-card"><div class="info-card-title">🔥 Onde esquentar comida</div><div class="info-card-text">Micro-ondas disponíveis no Bandejão (RU) e em algumas lanchonetes. Nas casinhas da vila, na parte embaixo da igrejinha.</div></div>
   </div>
 
   <!-- AULA VAGA -->
@@ -249,5 +249,20 @@ function showTab(id,btn){document.querySelectorAll(".tab-panel").forEach(p=>p.cl
 function showFood(id,btn){document.querySelectorAll('.food-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
 function toggleTheme(){const h=document.documentElement,b=document.getElementById('themeBtn');if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');b.textContent='🌙 Modo escuro';localStorage.setItem('puc-theme','dark')}else{h.setAttribute('data-theme','light');b.textContent='☀️ Modo claro';localStorage.setItem('puc-theme','light')}}
 const saved=localStorage.getItem('puc-theme');if(saved==='light'){document.documentElement.setAttribute('data-theme','light');document.getElementById('themeBtn').textContent='☀️ Modo claro'}
+
+var currentLang=localStorage.getItem("puc-lang")||"pt";
+function applyLang(lang){
+  document.querySelectorAll("[data-pt]").forEach(function(el){
+    var pt=el.getAttribute("data-pt"),en=el.getAttribute("data-en");
+    if(el.innerHTML&&el.innerHTML.indexOf("<")>-1){el.innerHTML=lang==="en"?en:pt;}
+    else{el.textContent=lang==="en"?en:pt;}
+  });
+  var btn=document.getElementById("langBtn");
+  if(btn){btn.textContent=lang==="en"?"PT":"EN";btn.classList.toggle("active-lang",lang==="en");}
+  document.documentElement.lang=lang==="en"?"en":"pt-BR";
+  localStorage.setItem("puc-lang",lang);currentLang=lang;
+}
+function toggleLang(){applyLang(currentLang==="pt"?"en":"pt");}
+applyLang(currentLang);
 </script>
 </body></html>
