@@ -37,14 +37,14 @@
   .oi-ecoa{background:rgba(255,130,100,.15)} .oi-genesis{background:rgba(245,200,66,.15)} .oi-ej{background:rgba(100,200,100,.15)}
   .oi-cc{background:rgba(0,194,255,.15)} .oi-lmf{background:rgba(245,200,66,.12)}
   .oi-eng{background:rgba(0,194,255,.12)} .oi-econ{background:rgba(245,200,66,.12)} .oi-adm{background:rgba(200,100,255,.12)}
-  .oi-psi{background:rgba(255,130,100,.12)} .oi-com{background:rgba(100,200,100,.12)} .oi-arq{background:rgba(180,140,40,.12)} .oi-dir{background:rgba(200,80,80,.12)}
+  .oi-psi{background:rgba(255,130,100,.12)} .oi-com{background:rgba(100,200,100,.12)} .oi-arq{background:rgba(180,140,40,.12)} .oi-dir{background:rgba(200,80,80,.12)} .oi-geral{background:rgba(255,255,255,.08)}
   .org-meta .org-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;margin-bottom:3px;color:var(--text-main)}
-  .org-meta .org-tagline{font-size:16px;font-weight:300;color:var(--text-muted);line-height:1.5}
-  .org-desc{font-size:15px;font-weight:300;color:var(--text-muted);line-height:1.7;margin-bottom:12px}
+  .org-meta .org-tagline{font-size:11px;font-weight:300;color:var(--text-muted);line-height:1.5}
+  .org-desc{font-size:13px;font-weight:300;color:var(--text-muted);line-height:1.7;margin-bottom:12px}
   .org-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
-  .org-tag{font-size:15px;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,.06);color:var(--text-muted);border:1px solid rgba(255,255,255,.08)}
+  .org-tag{font-size:10px;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,.06);color:var(--text-muted);border:1px solid rgba(255,255,255,.08)}
   .org-links{display:flex;gap:8px;flex-wrap:wrap}
-  .org-link{flex:1;min-width:120px;display:flex;align-items:center;justify-content:center;gap:6px;padding:9px;border-radius:10px;font-size:15px;font-weight:500;text-decoration:none;transition:background .2s}
+  .org-link{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 14px;border-radius:10px;font-size:12px;font-weight:500;text-decoration:none;transition:background .2s}
   .link-ecoa{background:rgba(255,130,100,.1);border:1px solid rgba(255,130,100,.25);color:#ff9070}.link-ecoa:hover{background:rgba(255,130,100,.2)}
   .link-genesis{background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.25);color:var(--gold)}.link-genesis:hover{background:rgba(245,200,66,.2)}
   .link-ej{background:rgba(100,200,100,.1);border:1px solid rgba(100,200,100,.25);color:#7ee87e}.link-ej:hover{background:rgba(100,200,100,.2)}
@@ -54,23 +54,24 @@
   .link-green{background:rgba(100,200,100,.1);border:1px solid rgba(100,200,100,.25);color:#7ee87e}.link-green:hover{background:rgba(100,200,100,.2)}
   .link-orange{background:rgba(255,130,100,.1);border:1px solid rgba(255,130,100,.25);color:#ff9070}.link-orange:hover{background:rgba(255,130,100,.2)}
 
-  .liga-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:16px 18px;margin-bottom:10px;backdrop-filter:blur(12px)}
-  .liga-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:4px;color:var(--text-main)}
-  .liga-desc{font-size:15px;font-weight:300;color:var(--text-muted);line-height:1.5}
-  .liga-tag{display:inline-block;font-size:15px;padding:2px 8px;border-radius:100px;margin-top:6px;margin-right:4px;background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.18);color:rgba(0,194,255,.8)}
+  .liga-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:18px 20px;margin-bottom:12px;backdrop-filter:blur(12px);transition:transform .2s,border-color .2s}
+  .liga-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:4px;color:var(--text-main)}
+  .liga-desc{font-size:12px;font-weight:300;color:var(--text-muted);line-height:1.5}
+  .liga-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:100px;margin-top:6px;margin-right:4px;background:rgba(0,194,255,.08);border:1px solid rgba(0,194,255,.18);color:rgba(0,194,255,.8)}
+  .liga-tags{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px}
   .liga-footer{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-  .liga-link{font-size:16px;padding:4px 12px;border-radius:100px;text-decoration:none;transition:background .2s}
+  .liga-link{font-size:12px;padding:4px 12px;border-radius:100px;text-decoration:none;transition:background .2s}
 
   .estagio-row{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
   .estagio-pill{display:flex;align-items:center;gap:10px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:12px 16px;backdrop-filter:blur(12px)}
-  .estagio-icon{font-size:15px;flex-shrink:0}
-  .estagio-name{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text-main)}
-  .estagio-sub{font-size:16px;color:var(--text-muted);margin-top:1px}
-  .estagio-link{margin-left:auto;font-size:16px;padding:4px 10px;border-radius:100px;text-decoration:none;background:rgba(100,200,100,.1);border:1px solid rgba(100,200,100,.25);color:#7ee87e;white-space:nowrap}
+  .estagio-icon{font-size:16px;flex-shrink:0}
+  .estagio-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text-main)}
+  .estagio-sub{font-size:11px;color:var(--text-muted);margin-top:1px}
+  .estagio-link{margin-left:auto;font-size:11px;padding:4px 10px;border-radius:100px;text-decoration:none;background:rgba(100,200,100,.1);border:1px solid rgba(100,200,100,.25);color:#7ee87e;white-space:nowrap}
 
-  .tip-box{background:rgba(245,200,66,.06);border:1px solid rgba(245,200,66,.2);border-radius:12px;padding:14px 16px;font-size:15px;color:rgba(245,200,66,.85);line-height:1.6;margin-top:16px}
+  .tip-box{background:rgba(245,200,66,.06);border:1px solid rgba(245,200,66,.2);border-radius:12px;padding:14px 16px;font-size:12px;color:rgba(245,200,66,.85);line-height:1.6;margin-top:16px}
   .tip-box strong{color:var(--gold)}
-  .highlight-box{background:rgba(0,194,255,.05);border:1px solid rgba(0,194,255,.2);border-radius:12px;padding:14px 16px;font-size:15px;color:var(--text-muted);line-height:1.6;margin-bottom:14px}
+  .highlight-box{background:rgba(0,194,255,.05);border:1px solid rgba(0,194,255,.2);border-radius:12px;padding:14px 16px;font-size:12px;color:var(--text-muted);line-height:1.6;margin-bottom:14px}
   .highlight-box strong{color:var(--accent)}
 
   
@@ -185,28 +186,28 @@
     <div class="liga-card">
       <div class="liga-name">🚗 Reptiles Baja</div>
       <div class="liga-desc">Projeto de construção de veículos off-road para a competição SAE Baja. Um dos projetos mais tradicionais de engenharia da PUC-Rio.</div>
-      <span class="liga-tag">Mecânica</span><span class="liga-tag">Competição SAE</span><span class="liga-tag">Off-road</span>
+      <div class="liga-tags"><span class="liga-tag">Mecânica</span><span class="liga-tag">Competição SAE</span><span class="liga-tag">Off-road</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/reptilesbaja" target="_blank">📸 @reptilesbaja</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">🏎️ Pegasus FSAE</div>
       <div class="liga-desc">Equipe que projeta e constrói um carro de Fórmula SAE para competições internacionais. Alta complexidade técnica e grande aprendizado prático.</div>
-      <span class="liga-tag">Fórmula</span><span class="liga-tag">Competição SAE</span><span class="liga-tag">Alto nível</span>
+      <div class="liga-tags"><span class="liga-tag">Fórmula</span><span class="liga-tag">Competição SAE</span><span class="liga-tag">Alto nível</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/pegasusfsae" target="_blank">📸 @pegasusfsae</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">✈️ AeroRio</div>
       <div class="liga-desc">Liga de aviação e drones. Projeta e constrói aeronaves não tripuladas para competições nacionais e internacionais.</div>
-      <span class="liga-tag">Drones</span><span class="liga-tag">Aeronáutica</span><span class="liga-tag">Competição</span>
+      <div class="liga-tags"><span class="liga-tag">Drones</span><span class="liga-tag">Aeronáutica</span><span class="liga-tag">Competição</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/aerorio" target="_blank">📸 @aerorio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">🤖 RioBotz</div>
       <div class="liga-desc">Uma das equipes de robótica de combate mais premiadas do mundo. Constrói robôs para campeonatos internacionais e é referência global na área.</div>
-      <span class="liga-tag">Robótica</span><span class="liga-tag">Competição mundial</span><span class="liga-tag">Alta performance</span>
+      <div class="liga-tags"><span class="liga-tag">Robótica</span><span class="liga-tag">Competição mundial</span><span class="liga-tag">Alta performance</span></div>
       <div class="liga-footer">
         <a class="liga-link link-insta" href="https://www.instagram.com/riobotz" target="_blank">📸 @riobotz</a>
         <a class="liga-link link-cc" href="https://www.riobotz.com.br" target="_blank">🌐 Site ↗</a>
@@ -216,7 +217,7 @@
     <div class="liga-card">
       <div class="liga-name">⚗️ AIChE PUC-Rio</div>
       <div class="liga-desc">Capítulo estudantil do American Institute of Chemical Engineers. Voltado para Engenharia Química com eventos, workshops e conexão com a indústria.</div>
-      <span class="liga-tag">Química</span><span class="liga-tag">Internacional</span><span class="liga-tag">Indústria</span>
+      <div class="liga-tags"><span class="liga-tag">Química</span><span class="liga-tag">Internacional</span><span class="liga-tag">Indústria</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/aichepucrio" target="_blank">📸 @aichepucrio</a></div>
     </div>
   </div>
@@ -228,28 +229,28 @@
     <div class="liga-card">
       <div class="liga-name">💰 ALFA — Lab de Finanças</div>
       <div class="liga-desc">Laboratório de finanças da PUC-Rio. Pesquisa aplicada, modelagem financeira e projetos práticos com dados reais do mercado.</div>
-      <span class="liga-tag">Laboratório</span><span class="liga-tag">Finanças</span><span class="liga-tag">Pesquisa</span>
+      <div class="liga-tags"><span class="liga-tag">Laboratório</span><span class="liga-tag">Finanças</span><span class="liga-tag">Pesquisa</span></div>
       <div class="liga-footer"><a class="liga-link link-gold" href="https://www.instagram.com/alfapucrio" target="_blank">📸 @alfapucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">🌍 GAMA — Lab de Macro</div>
       <div class="liga-desc">Laboratório de macroeconomia. Pesquisa e análise de política econômica, cenários macroeconômicos e indicadores nacionais e internacionais.</div>
-      <span class="liga-tag">Macroeconomia</span><span class="liga-tag">Laboratório</span><span class="liga-tag">Pesquisa</span>
+      <div class="liga-tags"><span class="liga-tag">Macroeconomia</span><span class="liga-tag">Laboratório</span><span class="liga-tag">Pesquisa</span></div>
       <div class="liga-footer"><a class="liga-link link-gold" href="https://www.instagram.com/gamapucrio" target="_blank">📸 @gamapucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">📐 NEA — Núcleo de Economia Aplicada</div>
       <div class="liga-desc">Núcleo voltado para economia aplicada e políticas públicas. Produz pesquisas e análises com impacto prático em questões reais da sociedade.</div>
-      <span class="liga-tag">Economia aplicada</span><span class="liga-tag">Políticas públicas</span>
+      <div class="liga-tags"><span class="liga-tag">Economia aplicada</span><span class="liga-tag">Políticas públicas</span></div>
       <div class="liga-footer"><a class="liga-link link-gold" href="https://www.instagram.com/neapucrio" target="_blank">📸 @neapucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">📉 EconData Analytics</div>
       <div class="liga-desc">Liga de ciência de dados aplicada à Economia. Para quem quer aprender análise de dados com foco em problemas econômicos reais.</div>
-      <span class="liga-tag">Ciência de dados</span><span class="liga-tag">Economia</span><span class="liga-tag">Programação</span>
+      <div class="liga-tags"><span class="liga-tag">Ciência de dados</span><span class="liga-tag">Economia</span><span class="liga-tag">Programação</span></div>
       <div class="liga-footer"><a class="liga-link link-gold" href="https://www.instagram.com/econdata_analytics" target="_blank">📸 @econdata_analytics</a></div>
     </div>
   </div>
@@ -261,14 +262,14 @@
     <div class="liga-card">
       <div class="liga-name">🗓️ Semana de ADM</div>
       <div class="liga-desc">Evento anual do curso de Administração com palestras, workshops e cases com profissionais do mercado. Ótimo para networking e horas complementares.</div>
-      <span class="liga-tag">Evento</span><span class="liga-tag">Networking</span><span class="liga-tag">Horas Complementares</span>
+      <div class="liga-tags"><span class="liga-tag">Evento</span><span class="liga-tag">Networking</span><span class="liga-tag">Horas Complementares</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/iagpuc_riooficial" target="_blank">📸 @iagpuc_riooficial</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">🏆 Olimpíada Brasileira de Administração</div>
       <div class="liga-desc">Competição nacional de Administração. Ótima oportunidade para se destacar e conectar com alunos de outras universidades.</div>
-      <span class="liga-tag">Competição nacional</span><span class="liga-tag">Destaque no currículo</span>
+      <div class="liga-tags"><span class="liga-tag">Competição nacional</span><span class="liga-tag">Destaque no currículo</span></div>
       <div class="liga-footer">
         <a class="liga-link link-insta" href="https://www.instagram.com/olimpiadadeadministracao" target="_blank">📸 Instagram ↗</a>
         <a class="liga-link link-cc" href="https://www.olimpiadadeadministracao.com.br" target="_blank">🌐 Site ↗</a>
@@ -293,56 +294,56 @@
     <div class="liga-card">
       <div class="liga-name">📝 LATECC — Liga de Terapia Cognitivo-Comportamental</div>
       <div class="liga-desc">Liga voltada para Terapia Cognitivo-Comportamental e práticas baseadas em evidências. Espaço de estudo, discussão clínica e desenvolvimento de habilidades terapêuticas.</div>
-      <span class="liga-tag">TCC</span><span class="liga-tag">Clínica</span><span class="liga-tag">Evidências</span>
+      <div class="liga-tags"><span class="liga-tag">TCC</span><span class="liga-tag">Clínica</span><span class="liga-tag">Evidências</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/lateccpucrio" target="_blank">📸 @lateccpucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">🧪 LANCE — Liga de Neuropsicologia Clínica Experimental</div>
       <div class="liga-desc">Liga voltada para neuropsicologia. Une teoria e prática clínica com base em pesquisa experimental e avaliação neuropsicológica.</div>
-      <span class="liga-tag">Neuropsicologia</span><span class="liga-tag">Clínica</span><span class="liga-tag">Experimental</span>
+      <div class="liga-tags"><span class="liga-tag">Neuropsicologia</span><span class="liga-tag">Clínica</span><span class="liga-tag">Experimental</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/lance.pucrio" target="_blank">📸 @lance.pucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">⚖️ LAPJUR — Liga de Psicologia Jurídica</div>
       <div class="liga-desc">Foco na interface entre Psicologia e Direito. Avaliação psicológica forense, mediação e atuação em contextos jurídicos.</div>
-      <span class="liga-tag">Jurídica</span><span class="liga-tag">Forense</span>
+      <div class="liga-tags"><span class="liga-tag">Jurídica</span><span class="liga-tag">Forense</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/lapjur_pucrio" target="_blank">📸 @lapjur_pucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">🌿 LAPSA — Liga de Psicologia da Saúde</div>
       <div class="liga-desc">Atuação da psicologia em contextos de saúde — hospitais, UBSs, promoção de saúde e psicologia hospitalar.</div>
-      <span class="liga-tag">Saúde</span><span class="liga-tag">Hospitalar</span>
+      <div class="liga-tags"><span class="liga-tag">Saúde</span><span class="liga-tag">Hospitalar</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/lapsa.pucrj" target="_blank">📸 @lapsa.pucrj</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">🏙️ LADCA — Liga de Psicologia das Dinâmicas Contemporâneas</div>
       <div class="liga-desc">Explora temas contemporâneos da psicologia: tecnologia, subjetividade, cultura e novos contextos de adoecimento e cuidado.</div>
-      <span class="liga-tag">Contemporâneo</span><span class="liga-tag">Cultura</span>
+      <div class="liga-tags"><span class="liga-tag">Contemporâneo</span><span class="liga-tag">Cultura</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/ladca.pucrio" target="_blank">📸 @ladca.pucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">👶 LAPIJ — Liga de Psicologia da Infância e Juventude</div>
       <div class="liga-desc">Foco no desenvolvimento infantil e juvenil, com práticas clínicas, pesquisa e extensão voltadas para crianças e adolescentes.</div>
-      <span class="liga-tag">Infância</span><span class="liga-tag">Juventude</span><span class="liga-tag">Desenvolvimento</span>
+      <div class="liga-tags"><span class="liga-tag">Infância</span><span class="liga-tag">Juventude</span><span class="liga-tag">Desenvolvimento</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/lapij.pucrio" target="_blank">📸 @lapij.pucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">🧘 LAPSU — Liga de Psicologia da Subjetividade</div>
       <div class="liga-desc">Explora dimensões da subjetividade humana com abordagens teóricas e práticas clínicas diversas.</div>
-      <span class="liga-tag">Subjetividade</span><span class="liga-tag">Clínica</span>
+      <div class="liga-tags"><span class="liga-tag">Subjetividade</span><span class="liga-tag">Clínica</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/lapsu_pucrio" target="_blank">📸 @lapsu_pucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">🤲 LASM — Liga de Atenção em Saúde Mental</div>
       <div class="liga-desc">Liga voltada para saúde mental e atenção psicossocial. Discute políticas, práticas e desafios do cuidado em saúde mental.</div>
-      <span class="liga-tag">Saúde Mental</span><span class="liga-tag">Psicossocial</span>
+      <div class="liga-tags"><span class="liga-tag">Saúde Mental</span><span class="liga-tag">Psicossocial</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/lasmpucrio" target="_blank">📸 @lasmpucrio</a></div>
     </div>
 
@@ -408,7 +409,7 @@
     <div class="liga-card">
       <div class="liga-name">O que é o SPA?</div>
       <div class="liga-desc">O Serviço de Psicologia Aplicada é o serviço-escola do curso de Psicologia da PUC-Rio. Alunos de semestres avançados realizam atendimentos clínicos supervisionados por professores. O SPA oferece atendimento psicológico à comunidade e é também o principal espaço de prática clínica dos alunos do curso. As equipes variam por linha teórica e público atendido — entre em contato com o departamento para saber quais equipes estão ativas no semestre.</div>
-      <span class="liga-tag">Prática clínica</span><span class="liga-tag">Supervisionado</span><span class="liga-tag">Comunidade</span>
+      <div class="liga-tags"><span class="liga-tag">Prática clínica</span><span class="liga-tag">Supervisionado</span><span class="liga-tag">Comunidade</span>
     </div>
     </div><!-- fim psi-ic -->
   </div><!-- fim course-panel psi -->
@@ -454,7 +455,7 @@
     <div class="liga-card">
       <div class="liga-name">🔬 PIBIC — Iniciação Científica</div>
       <div class="liga-desc">Programa de iniciação científica do Departamento de Direito. Excelente para quem quer pesquisa, mestrado, doutorado ou currículo para intercâmbio. Duração de 2 anos.</div>
-      <span class="liga-tag">Pesquisa</span><span class="liga-tag">CNPq</span><span class="liga-tag">2 anos</span>
+      <span class="liga-tag">Pesquisa</span><span class="liga-tag">CNPq</span><span class="liga-tag">2 anos</span></div>
       <div class="liga-footer">
         <a class="liga-link link-insta" href="https://www.instagram.com/jurpucrio" target="_blank">📸 @jurpucrio</a>
         <a class="liga-link link-cc" href="https://www.instagram.com/iddpucrio" target="_blank">📸 @iddpucrio</a>
@@ -464,56 +465,56 @@
     <div class="liga-card">
       <div class="liga-name">⚖️ LACRIM — Liga de Ciências Criminais</div>
       <div class="liga-desc">Foco em Direito Penal, Processo Penal e Criminologia. Uma das ligas mais tradicionais do curso.</div>
-      <span class="liga-tag">Direito Penal</span><span class="liga-tag">Criminologia</span>
+      <div class="liga-tags"><span class="liga-tag">Direito Penal</span><span class="liga-tag">Criminologia</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/lacrim_pucrio" target="_blank">📸 @lacrim_pucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">🤝 GIMEC — Grupo de Mediação e Conciliação</div>
       <div class="liga-desc">Voltado para mediação, conciliação e métodos adequados de resolução de conflitos. Prática real de técnicas extrajudiciais.</div>
-      <span class="liga-tag">Mediação</span><span class="liga-tag">Conciliação</span>
+      <div class="liga-tags"><span class="liga-tag">Mediação</span><span class="liga-tag">Conciliação</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/gimecpucrio" target="_blank">📸 @gimecpucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">⚖️ GAEMNE — Grupo de Arbitragem e Métodos de Negociação</div>
       <div class="liga-desc">Arbitragem empresarial, negociação estratégica e resolução extrajudicial de conflitos.</div>
-      <span class="liga-tag">Arbitragem</span><span class="liga-tag">Negociação</span>
+      <div class="liga-tags"><span class="liga-tag">Arbitragem</span><span class="liga-tag">Negociação</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/gaemnepucrio" target="_blank">📸 @gaemnepucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">💻 Legalite — Direito & Novas Tecnologias</div>
       <div class="liga-desc">Núcleo de Pesquisa e Inovação em Direito e Novas Tecnologias da PUC-Rio, integrado ao Instituto ECOA em parceria com o Departamento de Direito. Une ensino, pesquisa jurídica e desenvolvimento tecnológico com foco em IA, Bens Digitais e Smart Contracts.</div>
-      <span class="liga-tag">IA & Direito</span><span class="liga-tag">Smart Contracts</span><span class="liga-tag">ECOA</span>
+      <div class="liga-tags"><span class="liga-tag">IA & Direito</span><span class="liga-tag">Smart Contracts</span><span class="liga-tag">ECOA</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/nucleolegalitepucrio" target="_blank">📸 @nucleolegalitepucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">💡 LAPIN — Propriedade Intelectual</div>
       <div class="liga-desc">Marcas, patentes, direitos autorais e inovação. Liga com forte conexão com o ecossistema de startups.</div>
-      <span class="liga-tag">Patentes</span><span class="liga-tag">Marcas</span><span class="liga-tag">Inovação</span>
+      <div class="liga-tags"><span class="liga-tag">Patentes</span><span class="liga-tag">Marcas</span><span class="liga-tag">Inovação</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/lapin.pucrio" target="_blank">📸 @lapin.pucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">📖 GEP — Grupo de Estudos de Processo</div>
       <div class="liga-desc">Processo civil, litigância estratégica e prática forense. Estudo aprofundado da teoria e prática processual.</div>
-      <span class="liga-tag">Processo Civil</span><span class="liga-tag">Forense</span>
+      <div class="liga-tags"><span class="liga-tag">Processo Civil</span><span class="liga-tag">Forense</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/geppucrio" target="_blank">📸 @geppucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">🏛️ LADA — Direito Administrativo</div>
       <div class="liga-desc">Administração pública, licitações e controle da administração.</div>
-      <span class="liga-tag">Adm. Pública</span><span class="liga-tag">Licitações</span>
+      <div class="liga-tags"><span class="liga-tag">Adm. Pública</span><span class="liga-tag">Licitações</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/lada.pucrio" target="_blank">📸 @lada.pucrio</a></div>
     </div>
 
     <div class="liga-card">
       <div class="liga-name">💼 PUD — Direito Empresarial</div>
       <div class="liga-desc">Contratos, societário, startups e mercado. Liga com foco na prática empresarial.</div>
-      <span class="liga-tag">Empresarial</span><span class="liga-tag">Startups</span><span class="liga-tag">Contratos</span>
+      <div class="liga-tags"><span class="liga-tag">Empresarial</span><span class="liga-tag">Startups</span><span class="liga-tag">Contratos</span></div>
       <div class="liga-footer"><a class="liga-link link-insta" href="https://www.instagram.com/pud_pucrio" target="_blank">📸 @pud_pucrio</a></div>
     </div>
 
