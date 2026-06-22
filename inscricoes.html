@@ -100,7 +100,7 @@
       <div class="insc-head">
         <div class="insc-icon ii-ecoa">🌱</div>
         <div class="insc-meta">
-          <div class="insc-name">ECOA Summer Camp</div>
+          <div class="insc-name" data-pt="ECOA Summer Camp" data-en="ECOA Summer Camp">ECOA Summer Camp</div>
           <div class="insc-org">ECOA — Empreendedorismo & Inovação PUC-Rio</div>
         </div>
       </div>
@@ -125,7 +125,7 @@
       <div class="insc-head">
         <div class="insc-icon ii-cc">🤝</div>
         <div class="insc-meta">
-          <div class="insc-name">Consulting Club — Processo Seletivo</div>
+          <div class="insc-name" data-pt="Consulting Club — Processo Seletivo" data-en="Consulting Club — Selection Process">Consulting Club — Processo Seletivo</div>
           <div class="insc-org">Consulting Club PUC-Rio</div>
         </div>
       </div>
@@ -151,10 +151,9 @@
       <div class="add-card-text">Tem uma inscrição com prazo chegando?<br>Adicione aqui para avisar outros alunos!</div>
     </div>
 
-    <div class="tip-box"><strong>💡 Como manter atualizado:</strong> Sempre que uma liga, programa ou evento abrir inscrições, adicione um card aqui com o link direto e a data de encerramento. Fontes: Instagram das ligas, e-mails da PUC e grupos de WhatsApp.</div>
-  </div>
+    </div>
 
-  <!-- EM BREVE -->
+    <!-- EM BREVE -->
   <div class="section">
     <div class="section-title" data-pt="📌 Em breve — fique de olho" data-en="📌 Coming soon — keep an eye out">📌 Em breve — fique de olho</div>
 
@@ -162,7 +161,7 @@
       <div class="insc-head">
         <div class="insc-icon ii-ej">🏢</div>
         <div class="insc-meta">
-          <div class="insc-name">Empresa Júnior — Processo Seletivo</div>
+          <div class="insc-name" data-pt="Empresa Júnior — Processo Seletivo" data-en="Junior Enterprise — Selection Process">Empresa Júnior — Processo Seletivo</div>
           <div class="insc-org">Empresa Júnior PUC-Rio</div>
         </div>
       </div>
@@ -185,7 +184,7 @@
       <div class="insc-head">
         <div class="insc-icon ii-gen">💡</div>
         <div class="insc-meta">
-          <div class="insc-name">Gênesis — Pré-incubação</div>
+          <div class="insc-name" data-pt="Gênesis — Pré-incubação" data-en="Gênesis — Pre-incubation">Gênesis — Pré-incubação</div>
           <div class="insc-org">Instituto Gênesis PUC-Rio</div>
         </div>
       </div>
@@ -209,5 +208,20 @@
 <script>
 function toggleTheme(){const h=document.documentElement,b=document.getElementById('themeBtn');if(h.getAttribute('data-theme')==='light'){h.removeAttribute('data-theme');b.textContent='🌙 Modo escuro';localStorage.setItem('puc-theme','dark')}else{h.setAttribute('data-theme','light');b.textContent='☀️ Modo claro';localStorage.setItem('puc-theme','light')}}
 const saved=localStorage.getItem('puc-theme');if(saved==='light'){document.documentElement.setAttribute('data-theme','light');document.getElementById('themeBtn').textContent='☀️ Modo claro'}
+
+var currentLang=localStorage.getItem("puc-lang")||"pt";
+function applyLang(lang){
+  document.querySelectorAll("[data-pt]").forEach(function(el){
+    var pt=el.getAttribute("data-pt"),en=el.getAttribute("data-en");
+    if(el.innerHTML&&el.innerHTML.indexOf("<")>-1){el.innerHTML=lang==="en"?en:pt;}
+    else{el.textContent=lang==="en"?en:pt;}
+  });
+  var btn=document.getElementById("langBtn");
+  if(btn){btn.textContent=lang==="en"?"PT":"EN";btn.classList.toggle("active-lang",lang==="en");}
+  document.documentElement.lang=lang==="en"?"en":"pt-BR";
+  localStorage.setItem("puc-lang",lang);currentLang=lang;
+}
+function toggleLang(){applyLang(currentLang==="pt"?"en":"pt");}
+applyLang(currentLang);
 </script>
 </body></html>
